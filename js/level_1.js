@@ -33,6 +33,7 @@ function preload() {
   this.load.image('gainLife', '../Assets/Life/FioleSang.png');
 
   this.load.atlas('vampire', './Assets/Characters/Vampire/vampireWalk.png', './Assets/Characters/Vampire/vampireWalk.json');
+  
 
 }
 
