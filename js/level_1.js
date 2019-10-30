@@ -31,9 +31,17 @@ function preload() {
   this.load.image('middleLife', '../Assets/Life/MidLife.png');
   this.load.image('noLife', '../Assets/Life/NoLife.png');
   this.load.image('gainLife', '../Assets/Life/FioleSang.png');
+
+  // this.load.animation('vampire', './Assets/Characters/Vampire/vampireWalk.json');
+  this.load.atlas('vampire', './Assets/Characters/Vampire/vampireWalk.png', './Assets/Characters/Vampire/vampireWalk.json');
+
 }
 
 function create() {
+ 
+  this.vampire = this.add.sprite(400, 300, 'vampire');
+
+
   player = this.physics.add.sprite(400,300, 'zombie');
   this.add.image(650, 375, 'background');
 
