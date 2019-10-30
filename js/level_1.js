@@ -61,9 +61,12 @@ function create() {
   layer = map.createStaticLayer('top', tileset, 0, 0);
 
   layer.setCollisionByProperty({collides: true});
-  this.physics.add.collider(player, layer);
   this.physics.add.collider(player, potion, hitPotion);
   this.physics.add.collider(potion, layer);
+  layer.setCollisionByExclusion([-1]);
+  this.physics.world.bounds.width = layer.width;
+  this.physics.world.bounds.height = layer.height;
+  this.physics.add.collider(layer, player);
 }
 
 function hitPotion(player, potion) {
