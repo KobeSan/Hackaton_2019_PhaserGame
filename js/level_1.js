@@ -3,11 +3,11 @@ const config = {
   width: 1900,
   height: 920,
   physics: {
-    default: 'arcade',
-    arcade: {
-      gravity: { y: 300 },
-      debug: false
-    }
+      default: 'arcade',
+      arcade: {
+          gravity: { y: 200 },
+          debug: false
+      }
   },
   scene: {
     preload: preload,
@@ -37,7 +37,7 @@ function preload() {
 }
 
 function create() {
-  this.add.image(650, 375, 'background');
+  this.add.image(900, 500, 'background').setScrollFactor(0);
 
   potion = this.physics.add.sprite(500, 435, 'gainLife');
   potion.life = 50
@@ -72,14 +72,14 @@ function create() {
     });
   
 
-  player.setScale(0.5);
+  player.setScale(0.4);
   player.setBounce(0.2);
   player.setCollideWorldBounds(true);
   player.body.setGravityY(200);
 
   map = this.make.tilemap({key: 'map'});
   tileset = map.addTilesetImage('spritesheet', 'tiles');
-  layer = map.createStaticLayer('top', tileset, 0, 0);
+  layer = map.createDynamicLayer('top', tileset, 0, 0);
 
   layer.setCollisionByProperty({collides: true});
   this.physics.add.collider(player, potion, hitPotion);
@@ -108,41 +108,50 @@ function update() {
     player.setVelocityX(160);
     player.anims.play('walk', true)
     player.flipX = false
-  }
-  else {
+  }else {
     player.setVelocityX(0);
   };
 
-  if (cursors.up.isDown && player.body.touching.down) {
-    player.setVelocityY(-330);
-  };
-
-  if (player.life ===  300) {
-    this.add.image(1250, 70, 'life');
-    this.add.image(1200, 70, 'life');
-    this.add.image(1150, 70, 'life');
-  } else if (player.life === 250){
-    this.add.image(1250, 70, 'life');
-    this.add.image(1200, 70, 'life');
-    this.add.image(1150, 70, 'middleLife');
-  }else if (player.life === 200){
-    this.add.image(1250, 70, 'life');
-    this.add.image(1200, 70, 'life');
-    this.add.image(1150, 70, 'noLife');
-  }else if (player.life === 150){
-    this.add.image(1250, 70, 'life');
-    this.add.image(1200, 70, 'middleLife');
-    this.add.image(1150, 70, 'noLife');
-  }else if (player.life === 100){
-    this.add.image(1250, 70, 'life');
-    this.add.image(1200, 70, 'noLife');
-    this.add.image(1150, 70, 'noLife');
-  }else if (player.life === 50){
-    this.add.image(1250, 70, 'middleLife');
-    this.add.image(1200, 70, 'noLife');
-    this.add.image(1150, 70, 'noLife');
+  if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor())
+  {
+      player.body.setVelocityY(-500); // jump up
   }
 
+
+  if (player.life ===  300) {
+    this.add.image(1250, 70, 'life').setScrollFactor(0);
+    this.add.image(1200, 70, 'life').setScrollFactor(0);
+    this.add.image(1150, 70, 'life').setScrollFactor(0);
+  } else if (player.life === 250){
+    this.add.image(1250, 70, 'life').setScrollFactor(0);
+    this.add.image(1200, 70, 'life').setScrollFactor(0);
+    this.add.image(1150, 70, 'middleLife').setScrollFactor(0);
+  }else if (player.life === 200){
+    this.add.image(1250, 70, 'life').setScrollFactor(0);
+    this.add.image(1200, 70, 'life').setScrollFactor(0);
+    this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+  }else if (player.life === 150){
+    this.add.image(1250, 70, 'life').setScrollFactor(0);
+    this.add.image(1200, 70, 'middleLife').setScrollFactor(0);
+    this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+  }else if (player.life === 100){
+    this.add.image(1250, 70, 'life').setScrollFactor(0);
+    this.add.image(1200, 70, 'noLife').setScrollFactor(0);
+    this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+  }else if (player.life === 50){
+    this.add.image(1250, 70, 'middleLife').setScrollFactor(0);
+    this.add.image(1200, 70, 'noLife').setScrollFactor(0);
+    this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+  }
+
+
+  // set bounds so the camera won't go outside the game world
+  this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+  // make the camera follow the player
+  this.cameras.main.startFollow(player);
   
-}
+  }
+  
+  
+
 
