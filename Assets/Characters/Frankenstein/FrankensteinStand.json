@@ -1,0 +1,62 @@
+{
+	"textures": [
+		{
+			"image": "FrankensteinStand.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 262,
+				"h": 286
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "Idle_002.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 135,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 1,
+						"w": 130,
+						"h": 284
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 130,
+						"h": 284
+					}
+				},
+				{
+					"filename": "Idle_001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 135,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 1,
+						"w": 128,
+						"h": 284
+					},
+					"frame": {
+						"x": 133,
+						"y": 1,
+						"w": 128,
+						"h": 284
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:ece1eb92269fb9a1626096e179405032:c0499ddaffbad9a8dac96835ae07e238:93bbcf0890a748b5fd48cbfdddd6731a$"
+	}
+}

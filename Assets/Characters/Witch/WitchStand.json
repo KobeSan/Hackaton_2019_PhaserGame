@@ -1,0 +1,62 @@
+{
+	"textures": [
+		{
+			"image": "WitchStand.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 307,
+				"h": 284
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "idle_001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 153,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 3,
+						"w": 150,
+						"h": 282
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 150,
+						"h": 282
+					}
+				},
+				{
+					"filename": "idle_000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 153,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 4,
+						"w": 153,
+						"h": 281
+					},
+					"frame": {
+						"x": 153,
+						"y": 1,
+						"w": 153,
+						"h": 281
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:7f318532b0d8bd746f4185618016bc9b:6db93506ed5bee47ee6e3516e408ec61:59764ddc28219a163d34261d93f2aa91$"
+	}
+}
