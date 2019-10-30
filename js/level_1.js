@@ -1,7 +1,7 @@
 const config = {
   type: Phaser.AUTO,
-  width: 1900,
-  height: 920,
+  width: window.innerWidth * window.devicePixelRatio,
+  height: window.innerHeight * window.devicePixelRatio,
   physics: {
     default: 'arcade',
     arcade: {
@@ -21,7 +21,6 @@ let tileset;
 let layer;
 let game = new Phaser.Game(config);
 
-
 function preload() {
   this.load.image('background', '../Assets/Map/Graveyard/png/BG.png');
   this.load.image('zombie', '../Assets/Characters/Zombies/png/male/Idle (1).png');
@@ -39,26 +38,24 @@ function preload() {
 
 function create() {
  
-  this.vampire = this.add.sprite(400, 300, 'vampire');
+  player = this.physics.add.sprite(400, 300, 'vampire');
 
+  background = this.add.image(900, 500, 'background').setScrollFactor(0);
 
-  player = this.physics.add.sprite(400,300, 'zombie');
   this.add.image(650, 375, 'background');
 
   potion = this.physics.add.sprite(500, 435, 'gainLife');
   potion.life = 50
-
-  player = this.physics.add.sprite(400, 300, 'zombie');
   player.life = 200 
 
   player.setScale(0.2);
-  player.setBounce(0.2);
+  //player.setBounce(0.2);
   player.setCollideWorldBounds(true);
   player.body.setGravityY(200);
 
   map = this.make.tilemap({key: 'map'});
   tileset = map.addTilesetImage('spritesheet', 'tiles');
-  layer = map.createStaticLayer('top', tileset, 0, 0);
+  layer = map.createDynamicLayer('top', tileset, 0, 0);
 
   layer.setCollisionByProperty({collides: true});
   this.physics.add.collider(player, potion, hitPotion);
@@ -88,9 +85,10 @@ function update() {
     player.setVelocityX(0);
   };
 
-  if (cursors.up.isDown && player.body.touching.down) {
-    player.setVelocityY(-330);
-  };
+  if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor())
+  {
+      player.body.setVelocityY(-500); // jump up
+  }
 
   if (player.life ===  300) {
     this.add.image(1250, 70, 'life');
@@ -117,7 +115,9 @@ function update() {
     this.add.image(1200, 70, 'noLife');
     this.add.image(1150, 70, 'noLife');
   }
-
+  // set bounds so the camera won't go outside the game world
+  this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+  // make the camera follow the player
+  this.cameras.main.startFollow(player);
   
 }
-
