@@ -1,7 +1,7 @@
 const config = {
   type: Phaser.AUTO,
-  width: window.innerWidth * window.devicePixelRatio,
-  height: window.innerHeight * window.devicePixelRatio,
+  width: window.innerWidth,
+  height: window.innerHeight,
   physics: {
       default: 'arcade',
       arcade: {
@@ -37,7 +37,7 @@ function preload() {
 }
 
 function create() {
-  background = this.add.image(900, 500, 'background').setScrollFactor(0);
+  background = this.add.image(window.innerWidth/2, window.innerHeight/2, 'background').setScrollFactor(0).setDisplaySize(window.innerWidth,window.innerHeight);
   player = this.physics.add.sprite(400, 300, 'vampire');
 
   potion = this.physics.add.sprite(500, 435, 'gainLife');
