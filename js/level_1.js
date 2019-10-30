@@ -1,7 +1,7 @@
 const config = {
   type: Phaser.AUTO,
-  width: 1900,
-  height: 920,
+  width: window.innerWidth * window.devicePixelRatio,
+  height: window.innerHeight * window.devicePixelRatio,
   physics: {
       default: 'arcade',
       arcade: {
@@ -20,7 +20,6 @@ let map;
 let tileset;
 let layer;
 let game = new Phaser.Game(config);
-
 
 function preload() {
   this.load.image('background', '../Assets/Map/Graveyard/png/BG.png');
