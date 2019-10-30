@@ -1,0 +1,167 @@
+{
+	"textures": [
+		{
+			"image": "WitchDead.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 574,
+				"h": 501
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "hurt_005.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 52,
+						"y": 24,
+						"w": 169,
+						"h": 237
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 169,
+						"h": 237
+					}
+				},
+				{
+					"filename": "hurt_003.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 27,
+						"w": 155,
+						"h": 238
+					},
+					"frame": {
+						"x": 1,
+						"y": 240,
+						"w": 155,
+						"h": 238
+					}
+				},
+				{
+					"filename": "hurt_002.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 46,
+						"y": 4,
+						"w": 140,
+						"h": 256
+					},
+					"frame": {
+						"x": 158,
+						"y": 240,
+						"w": 140,
+						"h": 256
+					}
+				},
+				{
+					"filename": "hurt_006.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 142,
+						"w": 245,
+						"h": 142
+					},
+					"frame": {
+						"x": 172,
+						"y": 1,
+						"w": 245,
+						"h": 142
+					}
+				},
+				{
+					"filename": "hurt_001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 41,
+						"y": 0,
+						"w": 136,
+						"h": 259
+					},
+					"frame": {
+						"x": 300,
+						"y": 145,
+						"w": 136,
+						"h": 259
+					}
+				},
+				{
+					"filename": "hurt_000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 31,
+						"y": 11,
+						"w": 135,
+						"h": 249
+					},
+					"frame": {
+						"x": 438,
+						"y": 1,
+						"w": 135,
+						"h": 249
+					}
+				},
+				{
+					"filename": "hurt_004.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 256,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 13,
+						"w": 130,
+						"h": 248
+					},
+					"frame": {
+						"x": 438,
+						"y": 252,
+						"w": 130,
+						"h": 248
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:726c4c9c1fbdaa1be4e8562a3ff8dc23:37207b545069834c4d26855e536bc8b8:65fa0119eaabedf8a145c3560a9f571d$"
+	}
+}

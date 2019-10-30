@@ -1,7 +1,7 @@
 const config = {
   type: Phaser.AUTO,
-  width: 800,
-  height: 600,
+  width: 1900,
+  height: 920,
   physics: {
       default: 'arcade',
       arcade: {
@@ -16,57 +16,51 @@ const config = {
   }
 };
 
-let platforms;
+let map;
+let tileset;
+let layer;
 let game = new Phaser.Game(config);
 
 
 function preload() {
   this.load.image('background', '../Assets/Map/Graveyard/png/BG.png');
-  this.load.image('groundBegin', '../Assets/Map/Graveyard/png/Tiles/Tile (1).png');
-  this.load.image('groundMid', '../Assets/Map/Graveyard/png/Tiles/Tile (2).png');
-  this.load.image('groundEnd', '../Assets/Map/Graveyard/png/Tiles/Tile (3).png');
   this.load.image('zombie', '../Assets/Characters/Zombies/png/male/Idle (1).png');
+  this.load.image('tiles', '../Assets/Map/Graveyard/spritesheet.png');
+  this.load.tilemapTiledJSON('map', '../Assets/Map/Graveyard/map.json');
 }
 
 function create() {
-  this.add.image(400, 300, 'background');
   player = this.physics.add.sprite(400,300, 'zombie');
   player.setScale(0.2);
   player.setBounce(0.2);
   player.setCollideWorldBounds(true);
   player.body.setGravityY(200);
 
-  platforms = this.physics.add.staticGroup();
-  platforms.create(65, 535, 'groundBegin').refreshBody();
-  platforms.create(190, 535, 'groundMid')
-  platforms.create(315, 535, 'groundMid')
-  platforms.create(440, 535, 'groundMid')
-  platforms.create(565, 535, 'groundMid')
-  platforms.create(620, 535, 'groundMid')
-  platforms.create(735, 535, 'groundEnd')
+  map = this.make.tilemap({key: 'map'});
+  tileset = map.addTilesetImage('spritesheet', 'tiles');
+  layer = map.createStaticLayer('top', tileset, 0, 0);
 
-  this.physics.add.collider(player, platforms);
+  layer.setCollisionByExclusion([-1]);
+  this.physics.world.bounds.width = layer.width;
+  this.physics.world.bounds.height = layer.height;
+  this.physics.add.collider(layer, player);
 }
 
 function update() {
 
   let cursors = this.input.keyboard.createCursorKeys();
 
-  if (cursors.left.isDown)
-  {
+  if (cursors.left.isDown){
     player.setVelocityX(-160);
   }
-  else if (cursors.right.isDown)
-  {
+  else if (cursors.right.isDown){
     player.setVelocityX(160);
   }
-  else
-  {
+  else{
     player.setVelocityX(0);
-  };
+  }
   
-  if (cursors.up.isDown && player.body.touching.down)
-  {
+  if (cursors.up.isDown && player.body.touching.down){
     player.setVelocityY(-330);
-  };
+  }
 }
