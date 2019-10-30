@@ -30,6 +30,8 @@ function preload() {
 }
 
 function create() {
+  background = this.add.image(900, 500, 'background').setScrollFactor(0);
+
   player = this.physics.add.sprite(400,300, 'zombie');
   player.setScale(0.2);
   player.setBounce(0.2);
@@ -63,4 +65,9 @@ function update() {
   if (cursors.up.isDown && player.body.touching.down){
     player.setVelocityY(-330);
   }
+
+  // set bounds so the camera won't go outside the game world
+  this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+  // make the camera follow the player
+  this.cameras.main.startFollow(player);
 }
