@@ -1,18 +1,18 @@
 const config = {
   type: Phaser.AUTO,
-  width: 800,
-  height: 600,
+  width: 1300,
+  height: 750,
   physics: {
-      default: 'arcade',
-      arcade: {
-          gravity: { y: 300 },
-          debug: false
-      }
+    default: 'arcade',
+    arcade: {
+      gravity: { y: 300 },
+      debug: false
+    }
   },
   scene: {
-      preload: preload,
-      create: create,
-      update: update
+    preload: preload,
+    create: create,
+    update: update,
   }
 };
 
@@ -26,11 +26,22 @@ function preload() {
   this.load.image('groundMid', '../Assets/Map/Graveyard/png/Tiles/Tile (2).png');
   this.load.image('groundEnd', '../Assets/Map/Graveyard/png/Tiles/Tile (3).png');
   this.load.image('zombie', '../Assets/Characters/Zombies/png/male/Idle (1).png');
+  this.load.image('life', '../Assets/Life/fullLife.png');
+  this.load.image('middleLife', '../Assets/Life/MidLife.png');
+  this.load.image('noLife', '../Assets/Life/NoLife.png');
+  this.load.image('gainLife', '../Assets/Life/FioleSang.png');
 }
 
 function create() {
-  this.add.image(400, 300, 'background');
-  player = this.physics.add.sprite(400,300, 'zombie');
+  this.add.image(650, 375, 'background');
+  this.add.image(1250, 70, 'life');
+  this.add.image(1200, 70, 'middleLife');
+  this.add.image(1150, 70, 'noLife');
+
+  potion = this.physics.add.sprite(500, 435, 'gainLife');
+
+  player = this.physics.add.sprite(400, 300, 'zombie');
+  player.life = 100;
   player.setScale(0.2);
   player.setBounce(0.2);
   player.setCollideWorldBounds(true);
@@ -45,28 +56,39 @@ function create() {
   platforms.create(620, 535, 'groundMid')
   platforms.create(735, 535, 'groundEnd')
 
+  this.physics.add.collider(player, potion, hitPotion);
+
   this.physics.add.collider(player, platforms);
+  this.physics.add.collider(potion, platforms);
+}
+
+function hitPotion(player, potion) {
+  potion.destroy();
+  player.life += 50;
+  console.log(player.life);
 }
 
 function update() {
 
   let cursors = this.input.keyboard.createCursorKeys();
 
-  if (cursors.left.isDown)
-  {
+  if (cursors.left.isDown) {
     player.setVelocityX(-160);
   }
-  else if (cursors.right.isDown)
-  {
+  else if (cursors.right.isDown) {
     player.setVelocityX(160);
   }
-  else
-  {
+  else {
     player.setVelocityX(0);
   };
-  
-  if (cursors.up.isDown && player.body.touching.down)
-  {
+
+  if (cursors.up.isDown && player.body.touching.down) {
     player.setVelocityY(-330);
   };
+
+
+  //   if (250 <= player.life < 300) {
+  //     p
+  //   } else if (potion.life <)
 }
+
