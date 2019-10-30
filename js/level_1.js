@@ -37,12 +37,8 @@ function preload() {
 }
 
 function create() {
- 
-  player = this.physics.add.sprite(400, 300, 'vampire');
-
   background = this.add.image(900, 500, 'background').setScrollFactor(0);
-
-  this.add.image(650, 375, 'background');
+  player = this.physics.add.sprite(400, 300, 'vampire');
 
   potion = this.physics.add.sprite(500, 435, 'gainLife');
   potion.life = 50
