@@ -32,26 +32,47 @@ function preload() {
   this.load.image('noLife', '../Assets/Life/NoLife.png');
   this.load.image('gainLife', '../Assets/Life/FioleSang.png');
 
-  // this.load.animation('vampire', './Assets/Characters/Vampire/vampireWalk.json');
   this.load.atlas('vampire', './Assets/Characters/Vampire/vampireWalk.png', './Assets/Characters/Vampire/vampireWalk.json');
 
 }
 
 function create() {
- 
-  this.vampire = this.add.sprite(400, 300, 'vampire');
-
-
-  player = this.physics.add.sprite(400,300, 'zombie');
   this.add.image(650, 375, 'background');
 
   potion = this.physics.add.sprite(500, 435, 'gainLife');
   potion.life = 50
 
-  player = this.physics.add.sprite(400, 300, 'zombie');
+  player = this.physics.add.sprite(400, 300, 'vampire');
   player.life = 200 
 
-  player.setScale(0.2);
+  var frameNames= this.textures.get('vampire').getFrameNames();
+  console.log(frameNames);
+    this.anims.create({
+      key: 'walk',
+      frames: [
+        {
+        key: 'vampire',
+        frame: 'walk_000.png'
+        },
+        {
+          key: 'vampire',
+          frame: 'walk_001.png'
+        },
+        {
+          key: 'vampire',
+          frame: 'walk_002.png'
+        },
+        {
+          key: 'vampire',
+          frame: 'walk_003.png'
+        },
+      ],
+      frameRate: 8,
+      repeat: 0
+    });
+  
+
+  player.setScale(0.5);
   player.setBounce(0.2);
   player.setCollideWorldBounds(true);
   player.body.setGravityY(200);
@@ -80,9 +101,13 @@ function update() {
 
   if (cursors.left.isDown) {
     player.setVelocityX(-160);
+    player.anims.play('walk', true)
+    player.flipX = true 
   }
   else if (cursors.right.isDown) {
     player.setVelocityX(160);
+    player.anims.play('walk', true)
+    player.flipX = false
   }
   else {
     player.setVelocityX(0);
