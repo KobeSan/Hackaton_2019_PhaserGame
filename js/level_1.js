@@ -40,8 +40,10 @@ function create() {
   tileset = map.addTilesetImage('spritesheet', 'tiles');
   layer = map.createStaticLayer('top', tileset, 0, 0);
 
-  layer.setCollisionByProperty({collides: true});
-  this.physics.add.collider(player, layer);
+  layer.setCollisionByExclusion([-1]);
+  this.physics.world.bounds.width = layer.width;
+  this.physics.world.bounds.height = layer.height;
+  this.physics.add.collider(layer, player);
 }
 
 function update() {
