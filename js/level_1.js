@@ -27,14 +27,14 @@ function preload() {
   this.load.image('zombie', '../Assets/Characters/Zombies/png/male/Idle (1).png');
   this.load.image('tiles', '../Assets/Map/Graveyard/spritesheet.png');
   this.load.tilemapTiledJSON('map', '../Assets/Map/Graveyard/map.json');
-}
-
-function create() {
-  player = this.physics.add.sprite(400,300, 'zombie');
   this.load.image('life', '../Assets/Life/fullLife.png');
   this.load.image('middleLife', '../Assets/Life/MidLife.png');
   this.load.image('noLife', '../Assets/Life/NoLife.png');
   this.load.image('gainLife', '../Assets/Life/FioleSang.png');
+}
+
+function create() {
+  player = this.physics.add.sprite(400,300, 'zombie');
   this.add.image(650, 375, 'background');
 
   potion = this.physics.add.sprite(500, 435, 'gainLife');
