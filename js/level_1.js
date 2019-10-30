@@ -5,7 +5,7 @@ const config = {
   physics: {
       default: 'arcade',
       arcade: {
-          gravity: { y: 300 },
+          gravity: { y: 200 },
           debug: false
       }
   },
@@ -34,13 +34,13 @@ function create() {
 
   player = this.physics.add.sprite(400,300, 'zombie');
   player.setScale(0.2);
-  player.setBounce(0.2);
+  //player.setBounce(0.2);
   player.setCollideWorldBounds(true);
   player.body.setGravityY(200);
 
   map = this.make.tilemap({key: 'map'});
   tileset = map.addTilesetImage('spritesheet', 'tiles');
-  layer = map.createStaticLayer('top', tileset, 0, 0);
+  layer = map.createDynamicLayer('top', tileset, 0, 0);
 
   layer.setCollisionByExclusion([-1]);
   this.physics.world.bounds.width = layer.width;
@@ -62,8 +62,9 @@ function update() {
     player.setVelocityX(0);
   }
   
-  if (cursors.up.isDown && player.body.touching.down){
-    player.setVelocityY(-330);
+  if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor())
+  {
+      player.body.setVelocityY(-500); // jump up
   }
 
   // set bounds so the camera won't go outside the game world
