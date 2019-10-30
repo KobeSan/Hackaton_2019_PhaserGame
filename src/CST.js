@@ -1,7 +1,7 @@
 const CST = {
   SCENES: {
     LOAD : "LOAD",
-    MENU : "MENU"
-
+    MENU : "MENU",
+    LEVEL1 : "LEVEL1",
   }
 }

@@ -1,35 +1,22 @@
-const config = {
-  type: Phaser.AUTO,
-  width: 1900,
-  height: 920,
-  physics: {
-      default: 'arcade',
-      arcade: {
-          gravity: { y: 300 },
-          debug: false
-      }
-  },
-  scene: {
-      preload: preload,
-      create: create,
-      update: update
-  }
-};
-
 let map;
 let tileset;
 let layer;
-let game = new Phaser.Game(config);
 
+class Level_1 extends Phaser.Scene{
+  constructor(){
+    super({
+      key: CST.SCENES.LEVEL1,
+    })
+  }
 
-function preload() {
+preload(){
   this.load.image('background', '../Assets/Map/Graveyard/png/BG.png');
   this.load.image('zombie', '../Assets/Characters/Zombies/png/male/Idle (1).png');
   this.load.image('tiles', '../Assets/Map/Graveyard/spritesheet.png');
   this.load.tilemapTiledJSON('map', '../Assets/Map/Graveyard/map.json');
 }
 
-function create() {
+create(){
   player = this.physics.add.sprite(400,300, 'zombie');
   player.setScale(0.2);
   player.setBounce(0.2);
@@ -46,7 +33,7 @@ function create() {
   this.physics.add.collider(layer, player);
 }
 
-function update() {
+update(){
 
   let cursors = this.input.keyboard.createCursorKeys();
 
@@ -63,4 +50,5 @@ function update() {
   if (cursors.up.isDown && player.body.touching.down){
     player.setVelocityY(-330);
   }
+}
 }
