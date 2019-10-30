@@ -1,0 +1,104 @@
+{
+	"textures": [
+		{
+			"image": "WitchWalk.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 613,
+				"h": 287
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "walk_001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 184,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 36,
+						"y": 0,
+						"w": 144,
+						"h": 285
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 144,
+						"h": 285
+					}
+				},
+				{
+					"filename": "walk_003.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 184,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 36,
+						"y": 1,
+						"w": 143,
+						"h": 284
+					},
+					"frame": {
+						"x": 147,
+						"y": 1,
+						"w": 143,
+						"h": 284
+					}
+				},
+				{
+					"filename": "walk_002.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 184,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 178,
+						"h": 280
+					},
+					"frame": {
+						"x": 292,
+						"y": 1,
+						"w": 178,
+						"h": 280
+					}
+				},
+				{
+					"filename": "walk_000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 184,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 38,
+						"y": 2,
+						"w": 140,
+						"h": 279
+					},
+					"frame": {
+						"x": 472,
+						"y": 1,
+						"w": 140,
+						"h": 279
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:5392c6ecf9e9b8e324cb5b5b88b8359f:30088d03cd78d5d3b3fe5b53f3d3b8a7:c819c32584aab3e149a733eae1969572$"
+	}
+}

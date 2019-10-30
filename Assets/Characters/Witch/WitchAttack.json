@@ -1,0 +1,125 @@
+{
+	"textures": [
+		{
+			"image": "WitchAttack.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 845,
+				"h": 283
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "attack_004.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 201,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 4,
+						"w": 189,
+						"h": 281
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 189,
+						"h": 281
+					}
+				},
+				{
+					"filename": "attack_003.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 201,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 4,
+						"w": 178,
+						"h": 281
+					},
+					"frame": {
+						"x": 192,
+						"y": 1,
+						"w": 178,
+						"h": 281
+					}
+				},
+				{
+					"filename": "attack_000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 201,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 5,
+						"w": 152,
+						"h": 280
+					},
+					"frame": {
+						"x": 372,
+						"y": 1,
+						"w": 152,
+						"h": 280
+					}
+				},
+				{
+					"filename": "attack_002.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 201,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 160,
+						"h": 278
+					},
+					"frame": {
+						"x": 526,
+						"y": 1,
+						"w": 160,
+						"h": 278
+					}
+				},
+				{
+					"filename": "attack_001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 201,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 7,
+						"w": 156,
+						"h": 278
+					},
+					"frame": {
+						"x": 688,
+						"y": 1,
+						"w": 156,
+						"h": 278
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:715e800d2734883fba76f82a7545e9f4:0878f9cf010d84a14c9dac33fc408941:8c6f64c2bf9e43c2e2f72fe8ee6b020e$"
+	}
+}
