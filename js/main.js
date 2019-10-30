@@ -1,5 +1,3 @@
-import TitleScene from './TitleScene';
-
 let titleScene = new TitleScene();
 
 let config = {

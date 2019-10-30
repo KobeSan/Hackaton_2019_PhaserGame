@@ -10,9 +10,7 @@ class TitleScene extends Phaser.Scene {
   }
 
   create(){
-    let background = this.add.sprite(0, 0, 'background_img');
-    background.setOrigin(0,0);
+    this.add.sprite(400, 300, 'background_img').setScale(0.4);
+    this.add.text(350, 100, 'Vampire Run');
   }
 }
-
-export default TitleScene;
