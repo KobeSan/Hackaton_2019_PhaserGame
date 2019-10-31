@@ -33,6 +33,7 @@ let dateTest = new Date().getTime();
 let monsters_velocity = -50;
 let dead = false;
 let game = new Phaser.Game(config);
+let isAttacking = false;
 
 function preload() {
   this.load.image('background', '../Assets/Map/Graveyard/png/BG.png');
@@ -46,7 +47,8 @@ function preload() {
   this.load.image('tombe', '../Assets/Map/Graveyard/png/Objects/TombStone.png')
   this.load.image('jacko', '../Assets/Characters/JackO/png/Idle.png');
 
-  this.load.atlas('vampire', './Assets/Characters/Vampire/vampireWalk.png', './Assets/Characters/Vampire/vampireWalk.json');
+  
+  this.load.atlas('vampire', './Assets/Characters/Vampire/vampireDouble.png', './Assets/Characters/Vampire/vampireDouble.json');
 }
 
 function create() {
@@ -61,6 +63,7 @@ function create() {
   player.life = 300
 
   let frameNames = this.textures.get('vampire').getFrameNames();
+  console.log(frameNames)
   this.anims.create({
     key: 'walk',
     frames: [
@@ -84,7 +87,29 @@ function create() {
     frameRate: 8,
     repeat: 0
   });
-
+  this.anims.create({
+    key: 'attack',
+    frames: [
+      {
+        key: 'vampire',
+        frame: 'attack_000.png'
+      },
+      {
+        key: 'vampire',
+        frame: 'attack_001.png'
+      },
+      {
+        key: 'vampire',
+        frame: 'attack_002.png'
+      },
+      {
+        key: 'vampire',
+        frame: 'attack_003.png'
+      },
+    ],
+    frameRate: 8,
+    repeat: 1
+  });
 
   player.setScale(0.4);
   player.setCollideWorldBounds(true);
@@ -101,9 +126,8 @@ function create() {
   this.physics.add.collider(layer, player);
 
  
-
   // Pop des zombies aleatoirement 
-  for(let i = 0; i < 8; i++){
+  for(let i = 0; i < 20; i++){
     zombie[i] = this.physics.add.sprite((Math.random()*5000 + 800), 500, 'zombie').setScale(0.2);
     zombie[i].life = 50
     this.physics.add.collider(player,zombie[i], damage);
@@ -112,13 +136,14 @@ function create() {
   }
 
   // Pop des JACKOs aleatoirement 
-  for(let i = 0; i < 8; i++){
+  for(let i = 0; i < 13; i++){
     jacko[i] = this.physics.add.sprite((Math.random()*5000 + 800), 500, 'jacko').setScale(0.15);
     jacko[i].life = 50
     this.physics.add.collider(player,jacko[i], damage);
     this.physics.add.collider(layer, jacko[i]);
     jacko[i].flipX = true;
-  }
+    }
+  
   
   // Pop des fioles aleatoirement 
   for(let i = 0; i < 5; i++){
@@ -139,9 +164,8 @@ function create() {
   .then((response) => {
     console.log(response)
     })
-
-  
 }
+
 
 function stopGame(player, tombe){
  if(player.life > 1){
@@ -158,17 +182,26 @@ function hitPotion(player, potion) {
   console.log(player.life)
 }
 
-function damage(player,monsters) {
-  monsters.destroy();
-  player.life -= monsters.life
+function damage(player,zombie) {
+  console.log(isAttacking)
+  if(player.anims.currentAnim.key === 'attack'){
+    console.log(isAttacking)
+    zombie.destroy();
+  }else{
+    player.life -= 50;
+    player.setTint(0xff0000);
+    zombie.setVelocityX(500)
+  }
+  setTimeout(()=> {
+    zombie.setVelocityX(monsters_velocity);
+    player.setTint(0xffffff);
+  }, 1000);
 }
 
 function monsterMove() {
-  zombie.map(monster =>  monster.body && monster.setVelocityX(monsters_velocity))
-  jacko.map(monster =>  monster.body && monster.setVelocityX(monsters_velocity))
+  zombie.map(monster =>  monster.body && monster.setVelocityX(monsters_velocity));
+  jacko.map(monster =>  monster.body && monster.setVelocityX(monsters_velocity));
 }
-
-
 
 function update() {
 
@@ -187,7 +220,11 @@ function update() {
     player.setVelocityX(160);
     player.anims.play('walk', true)
     player.flipX = false
-  } else {
+  } else if (cursors.down.isDown) {
+    isAttacking = true;
+    player.anims.play('attack', true)
+    player.flipX = false
+  }else {
     player.setVelocityX(0);
   };
 
