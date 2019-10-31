@@ -16,12 +16,16 @@ const config = {
   }
 };
 
+
 let map;
 let tileset;
 let layer;
 let coeur1;
 let coeur2;
 let coeur3;
+let monsters = [];
+let potion = [];
+let currentMonster =[];
 let dead = false;
 let game = new Phaser.Game(config);
 
@@ -36,8 +40,6 @@ function preload() {
   this.load.image('gainLife', '../Assets/Life/FioleSang.png');
 
   this.load.atlas('vampire', './Assets/Characters/Vampire/vampireWalk.png', './Assets/Characters/Vampire/vampireWalk.json');
-
-
 }
 
 function create() {
@@ -48,17 +50,10 @@ function create() {
   coeur2 = this.add.image(1150, 70, 'middleLife').setScrollFactor(0);
   coeur3 = this.add.image(1150, 70, 'noLife').setScrollFactor(0);
 
-
   player = this.physics.add.sprite(400, 300, 'vampire');
-  enemy = this.physics.add.sprite(600, 500, 'zombie').setScale(0.2);
-  enemy.life = 50
-
-  potion = this.physics.add.sprite(100, 435, 'gainLife');
-  potion.life = 50
-  player.life = 50
+  player.life = 300
 
   let frameNames = this.textures.get('vampire').getFrameNames();
-  console.log(frameNames);
   this.anims.create({
     key: 'walk',
     frames: [
@@ -93,27 +88,47 @@ function create() {
   layer = map.createDynamicLayer('top', tileset, 0, 0);
 
   layer.setCollisionByProperty({ collides: true });
-  this.physics.add.collider(player, potion, hitPotion);
-  this.physics.add.collider(player,enemy, damage);
-  this.physics.add.collider(potion, layer);
   layer.setCollisionByExclusion([-1]);
   this.physics.world.bounds.width = layer.width;
   this.physics.world.bounds.height = layer.height;
   this.physics.add.collider(layer, player);
-  this.physics.add.collider(layer, enemy);
 
+  // Pop des monstres aleatoirement 
+  for(let i = 0; i < 15; i++){
+    monsters[i] = this.physics.add.sprite(Math.random()*4000, 500, 'zombie').setScale(0.2);
+    monsters[i].life = 50
+    this.physics.add.collider(player,monsters[i], damage);
+    this.physics.add.collider(layer, monsters[i]);
+  }
+  // Pop des fioles aleatoirement 
+  for(let i = 0; i < 5; i++){
+    potion[i] = this.physics.add.sprite(Math.random()*4000, 500, 'gainLife').setScale(0.7);
+    potion[i].life = 50
+    this.physics.add.collider(player,potion[i], hitPotion);
+    this.physics.add.collider(layer, potion[i]);
+  }
+
+  // API TO GET NAMES FOR OUR ENNEMY
+  axios('https://hackathon-wild-hackoween.herokuapp.com/monsters/')
+  .then((response) => {
+    console.log(response)
+    })
 }
 
 function hitPotion(player, potion) {
   potion.destroy();
+  if(player.life === 300){
+    potion.life = 0
+  }
   player.life += potion.life
-}
-
-function damage(player,enemy) {
-  enemy.destroy();
-  player.life -= enemy.life
   console.log(player.life)
 }
+
+function damage(player,monsters) {
+  monsters.destroy();
+  player.life -= monsters.life
+}
+
 
 function update() {
 
@@ -141,6 +156,11 @@ function update() {
     if(dead = true){
       player.life = 0
     };
+    this.add.text(window.innerWidth/3, window.innerHeight/3, 'GAME OVER', 
+    { fontFamily: 'Verdana',
+      fontSize: 100 + 'px',
+      color: 'red',
+    }).setScrollFactor(0);
     this.physics.pause();
     player.setTint(0xff0000);
     player.anims.play('walk', false);
@@ -199,6 +219,11 @@ function update() {
     this.physics.pause();
     player.setTint(0xff0000);
     player.anims.play('walk', false);
+    this.add.text(window.innerWidth/3, window.innerHeight/3, 'GAME OVER', 
+    { fontFamily: 'Verdana',
+      fontSize: 100 + 'px',
+      color: 'red',
+    }).setScrollFactor(0);
   }
 
 
