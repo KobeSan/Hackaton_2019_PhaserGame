@@ -62,7 +62,7 @@ create = () =>{
   coeur3 = this.add.image(1150, 70, 'noLife').setScrollFactor(0);
 
   this.player = this.physics.add.sprite(400, 300, 'vampire');
-  player.life = 300
+  this.player.life = 300
 
   let frameNames = this.textures.get('vampire').getFrameNames();
   this.anims.create({
@@ -90,9 +90,9 @@ create = () =>{
   });
 
 
-  player.setScale(0.4);
-  player.setCollideWorldBounds(true);
-  let playerPosition = player.body.setGravityY(200);
+  this.player.setScale(0.4);
+  this.player.setCollideWorldBounds(true);
+  let playerPosition = this.player.body.setGravityY(200);
 
   map = this.make.tilemap({ key: 'map' });
   tileset = map.addTilesetImage('spritesheet', 'tiles');
@@ -102,7 +102,7 @@ create = () =>{
   layer.setCollisionByExclusion([-1]);
   this.physics.world.bounds.width = layer.width;
   this.physics.world.bounds.height = layer.height;
-  this.physics.add.collider(layer, player);
+  this.physics.add.collider(layer, this.player);
 
  
 
@@ -110,7 +110,7 @@ create = () =>{
   for(let i = 0; i < 8; i++){
     zombie[i] = this.physics.add.sprite(Math.random()*4000, 500, 'zombie').setScale(0.2);
     zombie[i].life = 50
-    this.physics.add.collider(player,zombie[i], damage);
+    this.physics.add.collider(this.player,zombie[i], damage);
     this.physics.add.collider(layer, zombie[i]);
   }
 
@@ -118,7 +118,7 @@ create = () =>{
   for(let i = 0; i < 8; i++){
     jacko[i] = this.physics.add.sprite(Math.random()*4000, 500, 'jacko').setScale(0.15);
     jacko[i].life = 50
-    this.physics.add.collider(player,jacko[i], damage);
+    this.physics.add.collider(this.player,jacko[i], damage);
     this.physics.add.collider(layer, jacko[i]);
   }
   
@@ -126,13 +126,13 @@ create = () =>{
   for(let i = 0; i < 5; i++){
     potion[i] = this.physics.add.sprite(Math.random()*4000, 500, 'gainLife').setScale(0.7);
     potion[i].life = 50
-    this.physics.add.collider(player,potion[i], hitPotion);
+    this.physics.add.collider(this.player,potion[i], hitPotion);
     this.physics.add.collider(layer, potion[i]);
   }
 
   // YOU WIN
   tombe = this.physics.add.sprite(6300, 9, 'tombe').setScale(1.2)
-  this.physics.add.collider(player,tombe, stopGame);
+  this.physics.add.collider(this.player,tombe, stopGame);
   this.physics.add.collider(layer, tombe);
   tombe.life = 50;
  
@@ -151,26 +151,26 @@ update = () => {
   let cursors = this.input.keyboard.createCursorKeys();
 
   if (cursors.left.isDown) {
-    player.setVelocityX(-160);
-    player.anims.play('walk', true)
-    player.flipX = true
+    this.player.setVelocityX(-160);
+    this.player.anims.play('walk', true)
+    this.player.flipX = true
   }
   else if (cursors.right.isDown) {
-    player.setVelocityX(160);
-    player.anims.play('walk', true)
-    player.flipX = false
+    this.player.setVelocityX(160);
+    this.player.anims.play('walk', true)
+    this.player.flipX = false
   } else {
-    player.setVelocityX(0);
+    this.player.setVelocityX(0);
   };
 
-  if ((cursors.space.isDown || cursors.up.isDown) && player.body.onFloor()) {
-    player.body.setVelocityY(-500); // jump up
+  if ((cursors.space.isDown || cursors.up.isDown) && this.player.body.onFloor()) {
+    this.player.body.setVelocityY(-500); // jump up
   }
 
-  if (player.y > 820) {
+  if (this.player.y > 820) {
     dead = true
     if(dead = true){
-      player.life = 0
+      this.player.life = 0
     };
     this.add.text(window.innerWidth/3, window.innerHeight/3, 'GAME OVER', 
     { fontFamily: 'Verdana',
@@ -178,54 +178,54 @@ update = () => {
       color: 'red',
     }).setScrollFactor(0);
     this.physics.pause();
-    player.setTint(0xff0000);
-    player.anims.play('walk', false);
+    this.player.setTint(0xff0000);
+    this.player.anims.play('walk', false);
   }
 
   
-  if (player.life ===  300) {
+  if (this.player.life ===  300) {
     coeur1.destroy();
     coeur1 = this.add.image(170, 70, 'life').setScrollFactor(0);
     coeur2.destroy();
     coeur2 = this.add.image(110, 70, 'life').setScrollFactor(0);
     coeur3.destroy();
     coeur3 = this.add.image(50, 70, 'life').setScrollFactor(0);
-  } else if (player.life === 250){
+  } else if (this.player.life === 250){
     coeur1.destroy();
     coeur1 = this.add.image(170, 70, 'middleLife').setScrollFactor(0);
     coeur2.destroy();
     coeur2 = this.add.image(110, 70, 'life').setScrollFactor(0);
     coeur3.destroy();
     coeur3 = this.add.image(50, 70, 'life').setScrollFactor(0);
-  }else if (player.life === 200){
+  }else if (this.player.life === 200){
     coeur1.destroy();
     coeur1 = this.add.image(170, 70, 'noLife').setScrollFactor(0);
     coeur2.destroy();
     coeur2 = this.add.image(110, 70, 'life').setScrollFactor(0);
     coeur3.destroy();
     coeur3 = this.add.image(50, 70, 'life').setScrollFactor(0);
-  }else if (player.life === 150){
+  }else if (this.player.life === 150){
     coeur1.destroy();
     coeur1 = this.add.image(170, 70, 'noLife').setScrollFactor(0);
     coeur2.destroy();
     coeur2 = this.add.image(110, 70, 'middleLife').setScrollFactor(0);
     coeur3.destroy();
     coeur3 = this.add.image(50, 70, 'life').setScrollFactor(0);
-  }else if (player.life === 100){
+  }else if (this.player.life === 100){
     coeur1.destroy();
     coeur1 = this.add.image(170, 70, 'noLife').setScrollFactor(0);
     coeur2.destroy();
     coeur2 = this.add.image(110, 70, 'noLife').setScrollFactor(0);
     coeur3.destroy();
     coeur3 = this.add.image(50, 70, 'life').setScrollFactor(0);
-  }else if (player.life === 50){
+  }else if (this.player.life === 50){
     coeur1.destroy();
     coeur1 = this.add.image(170, 70, 'noLife').setScrollFactor(0);
     coeur2.destroy();
     coeur2 = this.add.image(110, 70, 'noLife').setScrollFactor(0);
     coeur3.destroy();
     coeur3 = this.add.image(50, 70, 'middleLife').setScrollFactor(0);
-  }else if (player.life === 0) {
+  }else if (this.player.life === 0) {
     coeur1.destroy();
     coeur1 = this.add.image(170, 70, 'noLife').setScrollFactor(0);
     coeur2.destroy();
@@ -233,8 +233,8 @@ update = () => {
     coeur3.destroy();
     coeur3 = this.add.image(50, 70, 'noLife').setScrollFactor(0);
     this.physics.pause();
-    player.setTint(0xff0000);
-    player.anims.play('walk', false);
+    this.player.setTint(0xff0000);
+    this.player.anims.play('walk', false);
     this.add.text(window.innerWidth/3, window.innerHeight/3, 'GAME OVER', 
     { fontFamily: 'Verdana',
       fontSize: 100 + 'px',
@@ -249,13 +249,13 @@ update = () => {
       color: 'green',
     }).setScrollFactor(0);
     this.physics.pause();
-    player.anims.play('walk', false);
+    this.player.anims.play('walk', false);
   }
 
 
   // set bounds so the camera won't go outside the game world
   this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-  // make the camera follow the player
-  this.cameras.main.startFollow(player);
+  // make the camera follow the this.player
+  this.cameras.main.startFollow(this.player);
 }
 }
