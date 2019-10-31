@@ -11,6 +11,10 @@ let jacko = [];
 let potion = [];
 let currentMonster =[];
 let dead = false;
+let isAttacking = false;
+let music;
+let musicZombie;
+let monsters_velocity = -50;
 
 class Level_1 extends Phaser.Scene{
   constructor(){
@@ -30,12 +34,19 @@ preload() {
   this.load.image('gainLife', '../Assets/Life/FioleSang.png');
   this.load.image('tombe', '../Assets/Map/Graveyard/png/Objects/TombStone.png')
   this.load.image('jacko', '../Assets/Characters/JackO/png/Idle.png');
-  this.load.atlas('vampire', './Assets/Characters/Vampire/vampireWalk.png', './Assets/Characters/Vampire/vampireWalk.json');
+
+  this.load.audio('theme', '../Assets/Music/music.mp3');
+  this.load.audio('zombieDies', '../Assets/Music/zombie.mp3');
+
+  this.load.atlas('vampire', './Assets/Characters/Vampire/vampireDouble.png', './Assets/Characters/Vampire/vampireDouble.json');
+  
 }
 
 create = () =>{
   let background = this.add.image(window.innerWidth/2, window.innerHeight/2, 'background').setScrollFactor(0).setDisplaySize(window.innerWidth,window.innerHeight);
-
+  music = this.sound.add('theme');
+  musicZombie = this.sound.add('zombieDies');
+  
   const stopGame = (player, tombe)=> {
     if(player.life > 1){
       tombe.life = 0
@@ -51,11 +62,25 @@ create = () =>{
      console.log(player.life)
    }
    
-  const damage = (player,monsters) => {
-     monsters.destroy();
-     player.life -= monsters.life
-   }
+ 
+const damage = (player,zombie) => {
+  console.log(isAttacking)
+  if(this.player.anims.currentAnim.key === 'attack'){
+    console.log(isAttacking)
+    zombie.destroy();
+    musicZombie.play();
+  }else{
+    player.life -= 50;
+    player.setTint(0xff0000);
+    zombie.setVelocityX(500)
+  }
+  setTimeout(()=> {
+    zombie.setVelocityX(monsters_velocity);
+    player.setTint(0xffffff);
+  }, 1000);
+}
 
+  music.play();
   // IMAGE COEUR 
   coeur1 = this.add.image(1250, 70, 'life').setScrollFactor(0);
   coeur2 = this.add.image(1150, 70, 'middleLife').setScrollFactor(0);
@@ -88,6 +113,33 @@ create = () =>{
     frameRate: 8,
     repeat: 0
   });
+  this.anims.create({
+    key: 'attack',
+    frames: [
+      {
+        key: 'vampire',
+        frame: 'attack_000.png'
+      },
+      {
+        key: 'vampire',
+        frame: 'attack_001.png'
+      },
+      {
+        key: 'vampire',
+        frame: 'attack_002.png'
+      },
+      {
+        key: 'vampire',
+        frame: 'attack_003.png'
+      },
+      {
+        key: 'vampire',
+        frame: 'attack_004.png'
+      },
+    ],
+    frameRate: 8,
+    repeat: 1
+  });
 
 
   this.player.setScale(0.4);
@@ -108,15 +160,15 @@ create = () =>{
 
   // Pop des zombies aleatoirement 
   for(let i = 0; i < 8; i++){
-    zombie[i] = this.physics.add.sprite(Math.random()*4000, 500, 'zombie').setScale(0.2);
+    zombie[i] = this.physics.add.sprite(Math.random()*5000 + 800, 500, 'zombie').setScale(0.2);
     zombie[i].life = 50
-    this.physics.add.collider(this.player,zombie[i], damage);
-    this.physics.add.collider(layer, zombie[i]);
+    this.physics.add.collider(this.player,this.zombie[i], damage);
+    this.physics.add.collider(layer, this.zombie[i]);
   }
 
     // Pop des JACKOs aleatoirement 
   for(let i = 0; i < 8; i++){
-    jacko[i] = this.physics.add.sprite(Math.random()*4000, 500, 'jacko').setScale(0.15);
+    jacko[i] = this.physics.add.sprite(Math.random()*5000 + 800, 500, 'jacko').setScale(0.15);
     jacko[i].life = 50
     this.physics.add.collider(this.player,jacko[i], damage);
     this.physics.add.collider(layer, jacko[i]);
@@ -126,7 +178,7 @@ create = () =>{
   for(let i = 0; i < 5; i++){
     potion[i] = this.physics.add.sprite(Math.random()*4000, 500, 'gainLife').setScale(0.7);
     potion[i].life = 50
-    this.physics.add.collider(this.player,potion[i], hitPotion);
+    this.physics.add.collider(this.player,this.potion[i], hitPotion);
     this.physics.add.collider(layer, potion[i]);
   }
 
@@ -143,13 +195,20 @@ create = () =>{
     })
 }
 
-
+monsterMove = () => {
+  zombie.map(monster =>  monster.body && monster.setVelocityX(this.monsters_velocity));
+  jacko.map(monster =>  monster.body && monster.setVelocityX(this.monsters_velocity));
+}
 
 
 update = () => {
 
   let cursors = this.input.keyboard.createCursorKeys();
 
+
+  if (zombie[0].y < 717 && jacko[0].y < 717) {
+      this.monsterMove();
+  }
   if (cursors.left.isDown) {
     this.player.setVelocityX(-160);
     this.player.anims.play('walk', true)
@@ -159,9 +218,14 @@ update = () => {
     this.player.setVelocityX(160);
     this.player.anims.play('walk', true)
     this.player.flipX = false
-  } else {
+  } else if (cursors.down.isDown) {
+    isAttacking = true;
+    this.player.anims.play('attack', true)
+    this.player.flipX = false
+  }else {
     this.player.setVelocityX(0);
   };
+  
 
   if ((cursors.space.isDown || cursors.up.isDown) && this.player.body.onFloor()) {
     this.player.body.setVelocityY(-500); // jump up
