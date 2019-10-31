@@ -34,6 +34,7 @@ let monsters_velocity = -50;
 let dead = false;
 let game = new Phaser.Game(config);
 let isAttacking = false;
+let music;
 
 function preload() {
   this.load.image('background', '../Assets/Map/Graveyard/png/BG.png');
@@ -47,13 +48,15 @@ function preload() {
   this.load.image('tombe', '../Assets/Map/Graveyard/png/Objects/TombStone.png')
   this.load.image('jacko', '../Assets/Characters/JackO/png/Idle.png');
 
-  
+  this.load.audio('theme', '../Assets/Music/music.mp3');
+
   this.load.atlas('vampire', './Assets/Characters/Vampire/vampireDouble.png', './Assets/Characters/Vampire/vampireDouble.json');
 }
 
 function create() {
   background = this.add.image(window.innerWidth/2, window.innerHeight/2, 'background').setScrollFactor(0).setDisplaySize(window.innerWidth,window.innerHeight);
-
+  music = this.sound.add('theme');
+  music.play();
   // IMAGE COEUR 
   coeur1 = this.add.image(1250, 70, 'life').setScrollFactor(0);
   coeur2 = this.add.image(1150, 70, 'middleLife').setScrollFactor(0);
