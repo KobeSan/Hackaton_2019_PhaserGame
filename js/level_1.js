@@ -1,20 +1,11 @@
-const config = {
-  type: Phaser.AUTO,
-  width: window.innerWidth,
-  height: window.innerHeight,
-  physics: {
-    default: 'arcade',
-    arcade: {
-      gravity: { y: 200 },
-      debug: false
-    }
-  },
-  scene: {
-    preload: preload,
-    create: create,
-    update: update,
+import Phaser from 'phaser';
+
+class Level_1 extends Phaser.Scene{
+  constructor(){
+    super({
+      key: 'level1'
+    });
   }
-};
 
 let win;
 let map;
@@ -31,7 +22,7 @@ let currentMonster =[];
 let dead = false;
 let game = new Phaser.Game(config);
 
-function preload() {
+preload() {
   this.load.image('background', '../Assets/Map/Graveyard/png/BG.png');
   this.load.image('zombie', '../Assets/Characters/Zombies/png/male/Idle (1).png');
   this.load.image('tiles', '../Assets/Map/Graveyard/spritesheet.png');
@@ -42,11 +33,10 @@ function preload() {
   this.load.image('gainLife', '../Assets/Life/FioleSang.png');
   this.load.image('tombe', '../Assets/Map/Graveyard/png/Objects/TombStone.png')
   this.load.image('jacko', '../Assets/Characters/JackO/png/Idle.png');
-
   this.load.atlas('vampire', './Assets/Characters/Vampire/vampireWalk.png', './Assets/Characters/Vampire/vampireWalk.json');
 }
 
-function create() {
+create() {
   background = this.add.image(window.innerWidth/2, window.innerHeight/2, 'background').setScrollFactor(0).setDisplaySize(window.innerWidth,window.innerHeight);
 
   // IMAGE COEUR 
@@ -159,7 +149,7 @@ function damage(player,monsters) {
 }
 
 
-function update() {
+update() {
 
   let cursors = this.input.keyboard.createCursorKeys();
 
@@ -270,5 +260,6 @@ function update() {
   this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
   // make the camera follow the player
   this.cameras.main.startFollow(player);
-
 }
+
+export default Level_1;
