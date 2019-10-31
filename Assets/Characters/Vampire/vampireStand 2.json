@@ -1,0 +1,62 @@
+{
+	"textures": [
+		{
+			"image": "vampireStand.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 246,
+				"h": 285
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "idle_000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 132,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 0,
+						"w": 123,
+						"h": 285
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 123,
+						"h": 285
+					}
+				},
+				{
+					"filename": "idle_001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 132,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 0,
+						"w": 123,
+						"h": 285
+					},
+					"frame": {
+						"x": 123,
+						"y": 0,
+						"w": 123,
+						"h": 285
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:8e3715999d28b0f2b419b3a49bde9af7:c9ed60319cac9b211b5df8b0983c2832:da751ebcd6c1eb4a2b192aeb4ea218dd$"
+	}
+}

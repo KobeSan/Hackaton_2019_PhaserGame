@@ -1,0 +1,146 @@
+{
+	"textures": [
+		{
+			"image": "WitchJump.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 397,
+				"h": 866
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "jump_001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 220,
+						"h": 408
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 71,
+						"w": 200,
+						"h": 293
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 200,
+						"h": 293
+					}
+				},
+				{
+					"filename": "jump_005.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 220,
+						"h": 408
+					},
+					"spriteSourceSize": {
+						"x": 48,
+						"y": 111,
+						"w": 160,
+						"h": 284
+					},
+					"frame": {
+						"x": 203,
+						"y": 1,
+						"w": 160,
+						"h": 284
+					}
+				},
+				{
+					"filename": "jump_000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 220,
+						"h": 408
+					},
+					"spriteSourceSize": {
+						"x": 60,
+						"y": 118,
+						"w": 150,
+						"h": 289
+					},
+					"frame": {
+						"x": 203,
+						"y": 287,
+						"w": 150,
+						"h": 289
+					}
+				},
+				{
+					"filename": "jump_003.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 220,
+						"h": 408
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 0,
+						"w": 198,
+						"h": 284
+					},
+					"frame": {
+						"x": 1,
+						"y": 296,
+						"w": 198,
+						"h": 284
+					}
+				},
+				{
+					"filename": "jump_004.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 220,
+						"h": 408
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 38,
+						"w": 195,
+						"h": 286
+					},
+					"frame": {
+						"x": 201,
+						"y": 578,
+						"w": 195,
+						"h": 286
+					}
+				},
+				{
+					"filename": "jump_002.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 220,
+						"h": 408
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 20,
+						"w": 198,
+						"h": 283
+					},
+					"frame": {
+						"x": 1,
+						"y": 582,
+						"w": 198,
+						"h": 283
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:e3c2449cfab34cefc51256d9249256b4:cd0689af09eba6e09aac18746a4db3a1:98660cf7470bbfa10cfabb5705122a90$"
+	}
+}

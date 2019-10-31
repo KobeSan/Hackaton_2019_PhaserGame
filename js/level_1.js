@@ -42,9 +42,9 @@ function create() {
 
   potion = this.physics.add.sprite(500, 435, 'gainLife');
   potion.life = 50
-  player.life = 50
+  player.life = 250
 
-  var frameNames = this.textures.get('vampire').getFrameNames();
+  let frameNames = this.textures.get('vampire').getFrameNames();
   console.log(frameNames);
   this.anims.create({
     key: 'walk',
@@ -72,7 +72,6 @@ function create() {
 
 
   player.setScale(0.4);
-  player.setBounce(0.2);
   player.setCollideWorldBounds(true);
   playerPosition = player.body.setGravityY(200);
 
