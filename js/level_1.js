@@ -52,11 +52,10 @@ function create() {
   player = this.physics.add.sprite(400, 300, 'vampire');
   enemy = this.physics.add.sprite(600, 500, 'zombie').setScale(0.2);
   enemy.life = 50
-  player.life = 100
 
   potion = this.physics.add.sprite(100, 435, 'gainLife');
   potion.life = 50
-  player.life = 250
+  player.life = 50
 
   let frameNames = this.textures.get('vampire').getFrameNames();
   console.log(frameNames);
@@ -150,53 +149,53 @@ function update() {
   
   if (player.life ===  300) {
     coeur1.destroy();
-    coeur1 = this.add.image(1250, 70, 'life').setScrollFactor(0);
+    coeur1 = this.add.image(170, 70, 'life').setScrollFactor(0);
     coeur2.destroy();
-    coeur2 = this.add.image(1200, 70, 'life').setScrollFactor(0);
+    coeur2 = this.add.image(110, 70, 'life').setScrollFactor(0);
     coeur3.destroy();
-    coeur3 = this.add.image(1150, 70, 'life').setScrollFactor(0);
+    coeur3 = this.add.image(50, 70, 'life').setScrollFactor(0);
   } else if (player.life === 250){
     coeur1.destroy();
-    coeur1 = this.add.image(1250, 70, 'life').setScrollFactor(0);
+    coeur1 = this.add.image(170, 70, 'middleLife').setScrollFactor(0);
     coeur2.destroy();
-    coeur2 = this.add.image(1200, 70, 'life').setScrollFactor(0);
+    coeur2 = this.add.image(110, 70, 'life').setScrollFactor(0);
     coeur3.destroy();
-    coeur3 = this.add.image(1150, 70, 'middleLife').setScrollFactor(0);
+    coeur3 = this.add.image(50, 70, 'life').setScrollFactor(0);
   }else if (player.life === 200){
     coeur1.destroy();
-    coeur1 = this.add.image(1250, 70, 'life').setScrollFactor(0);
+    coeur1 = this.add.image(170, 70, 'noLife').setScrollFactor(0);
     coeur2.destroy();
-    coeur2 = this.add.image(1200, 70, 'life').setScrollFactor(0);
+    coeur2 = this.add.image(110, 70, 'life').setScrollFactor(0);
     coeur3.destroy();
-    coeur3 = this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+    coeur3 = this.add.image(50, 70, 'life').setScrollFactor(0);
   }else if (player.life === 150){
     coeur1.destroy();
-    coeur1 = this.add.image(1250, 70, 'life').setScrollFactor(0);
+    coeur1 = this.add.image(170, 70, 'noLife').setScrollFactor(0);
     coeur2.destroy();
-    coeur2 = this.add.image(1200, 70, 'middleLife').setScrollFactor(0);
+    coeur2 = this.add.image(110, 70, 'middleLife').setScrollFactor(0);
     coeur3.destroy();
-    coeur3 = this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+    coeur3 = this.add.image(50, 70, 'life').setScrollFactor(0);
   }else if (player.life === 100){
     coeur1.destroy();
-    coeur1 = this.add.image(1250, 70, 'life').setScrollFactor(0);
+    coeur1 = this.add.image(170, 70, 'noLife').setScrollFactor(0);
     coeur2.destroy();
-    coeur2 = this.add.image(1200, 70, 'noLife').setScrollFactor(0);
+    coeur2 = this.add.image(110, 70, 'noLife').setScrollFactor(0);
     coeur3.destroy();
-    coeur3 = this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+    coeur3 = this.add.image(50, 70, 'life').setScrollFactor(0);
   }else if (player.life === 50){
     coeur1.destroy();
-    coeur1 = this.add.image(1250, 70, 'middleLife').setScrollFactor(0);
+    coeur1 = this.add.image(170, 70, 'noLife').setScrollFactor(0);
     coeur2.destroy();
-    coeur2 = this.add.image(1200, 70, 'noLife').setScrollFactor(0);
+    coeur2 = this.add.image(110, 70, 'noLife').setScrollFactor(0);
     coeur3.destroy();
-    coeur3 = this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+    coeur3 = this.add.image(50, 70, 'middleLife').setScrollFactor(0);
   }else if (player.life === 0) {
     coeur1.destroy();
-    coeur1 = this.add.image(1250, 70, 'noLife').setScrollFactor(0);
+    coeur1 = this.add.image(170, 70, 'noLife').setScrollFactor(0);
     coeur2.destroy();
-    coeur2 = this.add.image(1200, 70, 'noLife').setScrollFactor(0);
+    coeur2 = this.add.image(110, 70, 'noLife').setScrollFactor(0);
     coeur3.destroy();
-    coeur3 = this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+    coeur3 = this.add.image(50, 70, 'noLife').setScrollFactor(0);
     this.physics.pause();
     player.setTint(0xff0000);
     player.anims.play('walk', false);
