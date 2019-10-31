@@ -16,7 +16,10 @@ class TitleScene extends Phaser.Scene {
     this.add.text(350, 100, 'Vampire Run');
     let play = this.add.image(window.innerWidth / 2, 570, 'button').setScale(2);
     play.setInteractive({ useHandCursor: true });
-    play.on('pointerdown', () => this.scene.switch('level1'));
+    play.on('pointerdown', () => {
+      this.scene.switch('level1');
+      music.stop();
+    });
 
     music = this.sound.add('music');
     music.play();
