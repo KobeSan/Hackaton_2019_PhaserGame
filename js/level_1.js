@@ -127,7 +127,7 @@ function create() {
 
  
   // Pop des zombies aleatoirement 
-  for(let i = 0; i < 20; i++){
+  for(let i = 0; i < 50; i++){
     zombie[i] = this.physics.add.sprite((Math.random()*5000 + 800), 500, 'zombie').setScale(0.2);
     zombie[i].life = 50
     this.physics.add.collider(player,zombie[i], damage);
@@ -136,7 +136,7 @@ function create() {
   }
 
   // Pop des JACKOs aleatoirement 
-  for(let i = 0; i < 13; i++){
+  for(let i = 0; i < 40; i++){
     jacko[i] = this.physics.add.sprite((Math.random()*5000 + 800), 500, 'jacko').setScale(0.15);
     jacko[i].life = 50
     this.physics.add.collider(player,jacko[i], damage);
