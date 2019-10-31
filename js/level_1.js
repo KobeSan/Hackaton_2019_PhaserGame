@@ -19,6 +19,9 @@ const config = {
 let map;
 let tileset;
 let layer;
+let coeur1;
+let coeur2;
+let coeur3;
 let game = new Phaser.Game(config);
 
 function preload() {
@@ -38,9 +41,19 @@ function preload() {
 
 function create() {
   background = this.add.image(window.innerWidth/2, window.innerHeight/2, 'background').setScrollFactor(0).setDisplaySize(window.innerWidth,window.innerHeight);
-  player = this.physics.add.sprite(400, 300, 'vampire');
 
-  potion = this.physics.add.sprite(500, 435, 'gainLife');
+  // IMAGE COEUR 
+  coeur1 = this.add.image(1250, 70, 'life').setScrollFactor(0);
+  coeur2 = this.add.image(1150, 70, 'middleLife').setScrollFactor(0);
+  coeur3 = this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+
+
+  player = this.physics.add.sprite(400, 300, 'vampire');
+  enemy = this.physics.add.sprite(600, 500, 'zombie').setScale(0.2);
+  enemy.life = 50
+  player.life = 100
+
+  potion = this.physics.add.sprite(100, 435, 'gainLife');
   potion.life = 50
   player.life = 200 
 
@@ -82,16 +95,25 @@ function create() {
 
   layer.setCollisionByProperty({collides: true});
   this.physics.add.collider(player, potion, hitPotion);
+  this.physics.add.collider(player,enemy, damage);
   this.physics.add.collider(potion, layer);
   layer.setCollisionByExclusion([-1]);
   this.physics.world.bounds.width = layer.width;
   this.physics.world.bounds.height = layer.height;
   this.physics.add.collider(layer, player);
+  this.physics.add.collider(layer, enemy);
+
 }
 
 function hitPotion(player, potion) {
   potion.destroy();
   player.life += potion.life
+}
+
+function damage(player,enemy) {
+  enemy.destroy();
+  player.life -= enemy.life
+  console.log(player.life)
 }
 
 function update() {
@@ -116,30 +138,49 @@ function update() {
       player.body.setVelocityY(-500); // jump up
   }
 
+  
   if (player.life ===  300) {
-    this.add.image(1250, 70, 'life').setScrollFactor(0);
-    this.add.image(1200, 70, 'life').setScrollFactor(0);
-    this.add.image(1150, 70, 'life').setScrollFactor(0);
+    coeur1.destroy();
+    coeur1 = this.add.image(1250, 70, 'life').setScrollFactor(0);
+    coeur2.destroy();
+    coeur2 = this.add.image(1200, 70, 'life').setScrollFactor(0);
+    coeur3.destroy();
+    coeur3 = this.add.image(1150, 70, 'life').setScrollFactor(0);
   } else if (player.life === 250){
-    this.add.image(1250, 70, 'life').setScrollFactor(0);
-    this.add.image(1200, 70, 'life').setScrollFactor(0);
-    this.add.image(1150, 70, 'middleLife').setScrollFactor(0);
+    coeur1.destroy();
+    coeur1 = this.add.image(1250, 70, 'life').setScrollFactor(0);
+    coeur2.destroy();
+    coeur2 = this.add.image(1200, 70, 'life').setScrollFactor(0);
+    coeur3.destroy();
+    coeur3 = this.add.image(1150, 70, 'middleLife').setScrollFactor(0);
   }else if (player.life === 200){
-    this.add.image(1250, 70, 'life').setScrollFactor(0);
-    this.add.image(1200, 70, 'life').setScrollFactor(0);
-    this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+    coeur1.destroy();
+    coeur1 = this.add.image(1250, 70, 'life').setScrollFactor(0);
+    coeur2.destroy();
+    coeur2 = this.add.image(1200, 70, 'life').setScrollFactor(0);
+    coeur3.destroy();
+    coeur3 = this.add.image(1150, 70, 'noLife').setScrollFactor(0);
   }else if (player.life === 150){
-    this.add.image(1250, 70, 'life').setScrollFactor(0);
-    this.add.image(1200, 70, 'middleLife').setScrollFactor(0);
-    this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+    coeur1.destroy();
+    coeur1 = this.add.image(1250, 70, 'life').setScrollFactor(0);
+    coeur2.destroy();
+    coeur2 = this.add.image(1200, 70, 'middleLife').setScrollFactor(0);
+    coeur3.destroy();
+    coeur3 = this.add.image(1150, 70, 'noLife').setScrollFactor(0);
   }else if (player.life === 100){
-    this.add.image(1250, 70, 'life').setScrollFactor(0);
-    this.add.image(1200, 70, 'noLife').setScrollFactor(0);
-    this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+    coeur1.destroy();
+    coeur1 = this.add.image(1250, 70, 'life').setScrollFactor(0);
+    coeur2.destroy();
+    coeur2 = this.add.image(1200, 70, 'noLife').setScrollFactor(0);
+    coeur3.destroy();
+    coeur3 = this.add.image(1150, 70, 'noLife').setScrollFactor(0);
   }else if (player.life === 50){
-    this.add.image(1250, 70, 'middleLife').setScrollFactor(0);
-    this.add.image(1200, 70, 'noLife').setScrollFactor(0);
-    this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+    coeur1.destroy();
+    coeur1 = this.add.image(1250, 70, 'middleLife').setScrollFactor(0);
+    coeur2.destroy();
+    coeur2 = this.add.image(1200, 70, 'noLife').setScrollFactor(0);
+    coeur3.destroy();
+    coeur3 = this.add.image(1150, 70, 'noLife').setScrollFactor(0);
   }
 
 
