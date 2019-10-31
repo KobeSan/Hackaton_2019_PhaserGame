@@ -1,0 +1,209 @@
+{
+	"textures": [
+		{
+			"image": "vampireDouble.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 402,
+				"h": 853
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "walk_000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 138,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 7,
+						"w": 133,
+						"h": 278
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 133,
+						"h": 278
+					}
+				},
+				{
+					"filename": "walk_002.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 138,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 4,
+						"w": 130,
+						"h": 278
+					},
+					"frame": {
+						"x": 136,
+						"y": 1,
+						"w": 130,
+						"h": 278
+					}
+				},
+				{
+					"filename": "walk_003.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 138,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 6,
+						"w": 123,
+						"h": 279
+					},
+					"frame": {
+						"x": 268,
+						"y": 1,
+						"w": 123,
+						"h": 279
+					}
+				},
+				{
+					"filename": "walk_001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 138,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 4,
+						"w": 124,
+						"h": 281
+					},
+					"frame": {
+						"x": 1,
+						"y": 281,
+						"w": 124,
+						"h": 281
+					}
+				},
+				{
+					"filename": "attack_000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 169,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 1,
+						"w": 120,
+						"h": 284
+					},
+					"frame": {
+						"x": 127,
+						"y": 281,
+						"w": 120,
+						"h": 284
+					}
+				},
+				{
+					"filename": "attack_004.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 169,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 1,
+						"w": 132,
+						"h": 284
+					},
+					"frame": {
+						"x": 249,
+						"y": 282,
+						"w": 132,
+						"h": 284
+					}
+				},
+				{
+					"filename": "attack_001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 169,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 0,
+						"w": 121,
+						"h": 285
+					},
+					"frame": {
+						"x": 1,
+						"y": 564,
+						"w": 121,
+						"h": 285
+					}
+				},
+				{
+					"filename": "attack_002.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 169,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 0,
+						"w": 121,
+						"h": 285
+					},
+					"frame": {
+						"x": 124,
+						"y": 567,
+						"w": 121,
+						"h": 285
+					}
+				},
+				{
+					"filename": "attack_003.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 169,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 1,
+						"w": 154,
+						"h": 284
+					},
+					"frame": {
+						"x": 247,
+						"y": 568,
+						"w": 154,
+						"h": 284
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:857f9f087d4984b6d8645e21614cbb87:1c6c666bb410c271be30ca504a6a915e:f9a6065f4fa09c1946710f8320679b9d$"
+	}
+}

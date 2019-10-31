@@ -1,0 +1,104 @@
+{
+	"textures": [
+		{
+			"image": "FrankensteinWalk.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 581,
+				"h": 281
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "walk_000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 156,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 6,
+						"w": 150,
+						"h": 279
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 150,
+						"h": 279
+					}
+				},
+				{
+					"filename": "walk_003.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 156,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 5,
+						"w": 129,
+						"h": 279
+					},
+					"frame": {
+						"x": 153,
+						"y": 1,
+						"w": 129,
+						"h": 279
+					}
+				},
+				{
+					"filename": "walk_001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 156,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 3,
+						"w": 141,
+						"h": 277
+					},
+					"frame": {
+						"x": 284,
+						"y": 1,
+						"w": 141,
+						"h": 277
+					}
+				},
+				{
+					"filename": "walk_002.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 156,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 5,
+						"w": 153,
+						"h": 275
+					},
+					"frame": {
+						"x": 427,
+						"y": 1,
+						"w": 153,
+						"h": 275
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:81065e2c3dedbc25f7f4475da0d4094e:48e5ff03a3f0ef79ced806a5fb18b3bc:98abbe0ae388867a47f6accbbf4131ec$"
+	}
+}
