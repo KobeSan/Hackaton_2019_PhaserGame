@@ -16,14 +16,16 @@ const config = {
   }
 };
 
-
+let win;
 let map;
 let tileset;
 let layer;
 let coeur1;
 let coeur2;
 let coeur3;
-let monsters = [];
+let tombe = [];
+let zombie = [];
+let jacko = [];
 let potion = [];
 let currentMonster =[];
 let dead = false;
@@ -38,6 +40,8 @@ function preload() {
   this.load.image('middleLife', '../Assets/Life/MidLife.png');
   this.load.image('noLife', '../Assets/Life/NoLife.png');
   this.load.image('gainLife', '../Assets/Life/FioleSang.png');
+  this.load.image('tombe', '../Assets/Map/Graveyard/png/Objects/TombStone.png')
+  this.load.image('jacko', '../Assets/Characters/JackO/png/Idle.png');
 
   this.load.atlas('vampire', './Assets/Characters/Vampire/vampireWalk.png', './Assets/Characters/Vampire/vampireWalk.json');
 }
@@ -93,13 +97,24 @@ function create() {
   this.physics.world.bounds.height = layer.height;
   this.physics.add.collider(layer, player);
 
-  // Pop des monstres aleatoirement 
-  for(let i = 0; i < 15; i++){
-    monsters[i] = this.physics.add.sprite(Math.random()*4000, 500, 'zombie').setScale(0.2);
-    monsters[i].life = 50
-    this.physics.add.collider(player,monsters[i], damage);
-    this.physics.add.collider(layer, monsters[i]);
+ 
+
+  // Pop des zombies aleatoirement 
+  for(let i = 0; i < 8; i++){
+    zombie[i] = this.physics.add.sprite(Math.random()*4000, 500, 'zombie').setScale(0.2);
+    zombie[i].life = 50
+    this.physics.add.collider(player,zombie[i], damage);
+    this.physics.add.collider(layer, zombie[i]);
   }
+
+    // Pop des JACKOs aleatoirement 
+  for(let i = 0; i < 8; i++){
+    jacko[i] = this.physics.add.sprite(Math.random()*4000, 500, 'jacko').setScale(0.15);
+    jacko[i].life = 50
+    this.physics.add.collider(player,jacko[i], damage);
+    this.physics.add.collider(layer, jacko[i]);
+  }
+  
   // Pop des fioles aleatoirement 
   for(let i = 0; i < 5; i++){
     potion[i] = this.physics.add.sprite(Math.random()*4000, 500, 'gainLife').setScale(0.7);
@@ -108,12 +123,26 @@ function create() {
     this.physics.add.collider(layer, potion[i]);
   }
 
+  // YOU WIN
+  tombe = this.physics.add.sprite(6300, 9, 'tombe').setScale(1.2)
+  this.physics.add.collider(player,tombe, stopGame);
+  this.physics.add.collider(layer, tombe);
+  tombe.life = 50;
+ 
   // API TO GET NAMES FOR OUR ENNEMY
   axios('https://hackathon-wild-hackoween.herokuapp.com/monsters/')
   .then((response) => {
     console.log(response)
     })
+
+  
 }
+
+function stopGame(player, tombe){
+ if(player.life > 1){
+   tombe.life = 0
+ }
+} 
 
 function hitPotion(player, potion) {
   potion.destroy();
@@ -224,6 +253,16 @@ function update() {
       fontSize: 100 + 'px',
       color: 'red',
     }).setScrollFactor(0);
+  }
+
+  if(tombe.life === 0){
+    this.add.text(window.innerWidth/3, window.innerHeight/3, 'YOU WIN', 
+    { fontFamily: 'Verdana',
+      fontSize: 100 + 'px',
+      color: 'green',
+    }).setScrollFactor(0);
+    this.physics.pause();
+    player.anims.play('walk', false);
   }
 
 
