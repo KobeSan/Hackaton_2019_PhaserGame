@@ -74,7 +74,7 @@ function create() {
   player.setScale(0.4);
   player.setBounce(0.2);
   player.setCollideWorldBounds(true);
-  player.body.setGravityY(200);
+  playerPosition = player.body.setGravityY(200);
 
   map = this.make.tilemap({ key: 'map' });
   tileset = map.addTilesetImage('spritesheet', 'tiles');
@@ -115,7 +115,7 @@ function update() {
     player.body.setVelocityY(-500); // jump up
   }
 
-  if (player.body.onFloor() < player.setVelocityY(-1)) {
+  if (player.y > 820) {
     this.physics.pause();
     player.setTint(0xff0000);
     player.anims.play('walk', false);
@@ -152,6 +152,7 @@ function update() {
     player.anims.play('walk', false);
   }
 
+  console.log(player.y);
 
   // set bounds so the camera won't go outside the game world
   this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
