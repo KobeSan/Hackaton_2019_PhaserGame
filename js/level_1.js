@@ -106,6 +106,10 @@ function create() {
         key: 'vampire',
         frame: 'attack_003.png'
       },
+      {
+        key: 'vampire',
+        frame: 'attack_004.png'
+      },
     ],
     frameRate: 8,
     repeat: 1
