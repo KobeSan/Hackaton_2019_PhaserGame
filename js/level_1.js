@@ -2,6 +2,7 @@
   let map;
   let tileset;
   let layer;
+  let layer2;
   let coeur1;
   let coeur2;
   let coeur3;
@@ -148,6 +149,7 @@ class Level_1 extends Phaser.Scene{
     map = this.make.tilemap({ key: 'map' });
     tileset = map.addTilesetImage('spritesheet', 'tiles');
     layer = map.createDynamicLayer('top', tileset, 0, 0);
+    layer2 = map.createDynamicLayer('below', tileset, 0, 0)
   
     layer.setCollisionByProperty({ collides: true });
     layer.setCollisionByExclusion([-1]);
