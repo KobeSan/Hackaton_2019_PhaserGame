@@ -13,13 +13,17 @@ class TitleScene extends Phaser.Scene {
 
   }
   create() {
-    music = this.sound.add('music');
-    music.play();
     this.add.image(window.innerWidth/2, window.innerHeight/2, 'background_img').setDisplaySize(window.innerWidth,window.innerHeight);
     this.add.image(window.innerWidth/2, window.innerHeight/2, 'cimetiere').setDisplaySize(window.innerWidth,window.innerHeight);
     this.add.image(window.innerWidth/2 - 100, window.innerHeight/2 - 200, 'logo').setScale(0.2)
     let play = this.add.image(window.innerWidth / 2, 620, 'button').setScale(2);
     play.setInteractive({ useHandCursor: true });
-    play.on('pointerdown', () => this.scene.switch('level1'));
+    play.on('pointerdown', () => {
+      this.scene.switch('level1');
+      music.stop();
+    });
+
+    music = this.sound.add('music');
+    music.play();
   }
  }
