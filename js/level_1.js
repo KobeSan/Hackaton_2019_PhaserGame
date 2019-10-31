@@ -42,9 +42,9 @@ function create() {
 
   potion = this.physics.add.sprite(500, 435, 'gainLife');
   potion.life = 50
-  player.life = 200 
+  player.life = 250 
 
-  var frameNames= this.textures.get('vampire').getFrameNames();
+  let frameNames= this.textures.get('vampire').getFrameNames();
   console.log(frameNames);
     this.anims.create({
       key: 'walk',
@@ -72,7 +72,6 @@ function create() {
   
 
   player.setScale(0.4);
-  player.setBounce(0.2);
   player.setCollideWorldBounds(true);
   player.body.setGravityY(200);
 
@@ -117,29 +116,29 @@ function update() {
   }
 
   if (player.life ===  300) {
-    this.add.image(1250, 70, 'life').setScrollFactor(0);
-    this.add.image(1200, 70, 'life').setScrollFactor(0);
-    this.add.image(1150, 70, 'life').setScrollFactor(0);
+    this.add.image(170, 70, 'life').setScrollFactor(0);
+    this.add.image(110, 70, 'life').setScrollFactor(0);
+    this.add.image(50, 70, 'life').setScrollFactor(0);
   } else if (player.life === 250){
-    this.add.image(1250, 70, 'life').setScrollFactor(0);
-    this.add.image(1200, 70, 'life').setScrollFactor(0);
-    this.add.image(1150, 70, 'middleLife').setScrollFactor(0);
+    this.add.image(170, 70, 'middleLife').setScrollFactor(0);
+    this.add.image(110, 70, 'life').setScrollFactor(0);
+    this.add.image(50, 70, 'life').setScrollFactor(0);
   }else if (player.life === 200){
-    this.add.image(1250, 70, 'life').setScrollFactor(0);
-    this.add.image(1200, 70, 'life').setScrollFactor(0);
-    this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+    this.add.image(170, 70, 'noLife').setScrollFactor(0);
+    this.add.image(110, 70, 'life').setScrollFactor(0);
+    this.add.image(50, 70, 'life').setScrollFactor(0);
   }else if (player.life === 150){
-    this.add.image(1250, 70, 'life').setScrollFactor(0);
-    this.add.image(1200, 70, 'middleLife').setScrollFactor(0);
-    this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+    this.add.image(50, 70, 'life').setScrollFactor(0);
+    this.add.image(110, 70, 'middleLife').setScrollFactor(0);
+    this.add.image(170, 70, 'noLife').setScrollFactor(0);
   }else if (player.life === 100){
-    this.add.image(1250, 70, 'life').setScrollFactor(0);
-    this.add.image(1200, 70, 'noLife').setScrollFactor(0);
-    this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+    this.add.image(50, 70, 'life').setScrollFactor(0);
+    this.add.image(110, 70, 'noLife').setScrollFactor(0);
+    this.add.image(170, 70, 'noLife').setScrollFactor(0);
   }else if (player.life === 50){
-    this.add.image(1250, 70, 'middleLife').setScrollFactor(0);
-    this.add.image(1200, 70, 'noLife').setScrollFactor(0);
-    this.add.image(1150, 70, 'noLife').setScrollFactor(0);
+    this.add.image(50, 70, 'middleLife').setScrollFactor(0);
+    this.add.image(110, 70, 'noLife').setScrollFactor(0);
+    this.add.image(170, 70, 'noLife').setScrollFactor(0);
   }
 
 
