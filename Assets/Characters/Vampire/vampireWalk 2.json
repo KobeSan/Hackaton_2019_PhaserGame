@@ -1,0 +1,104 @@
+{
+	"textures": [
+		{
+			"image": "vampireWalk.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 532,
+				"h": 281
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "walk_000.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 278
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 278
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 278
+					}
+				},
+				{
+					"filename": "walk_001.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 124,
+						"h": 281
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 124,
+						"h": 281
+					},
+					"frame": {
+						"x": 133,
+						"y": 0,
+						"w": 124,
+						"h": 281
+					}
+				},
+				{
+					"filename": "walk_002.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 130,
+						"h": 278
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 130,
+						"h": 278
+					},
+					"frame": {
+						"x": 266,
+						"y": 0,
+						"w": 130,
+						"h": 278
+					}
+				},
+				{
+					"filename": "walk_003.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 123,
+						"h": 279
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 123,
+						"h": 279
+					},
+					"frame": {
+						"x": 399,
+						"y": 0,
+						"w": 123,
+						"h": 279
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:16ea3789dbb00d63ca0bc54c344b7637:9cf2ce3773c4c1eb27a7a69e9b44a190:2c9ad15d5918a92de61123e7d390634a$"
+	}
+}
