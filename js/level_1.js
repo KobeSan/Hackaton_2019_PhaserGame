@@ -28,6 +28,8 @@ let zombie = [];
 let jacko = [];
 let potion = [];
 let currentMonster =[];
+let dateTest = new Date().getTime();
+let monsters_velocity = -50;
 let dead = false;
 let game = new Phaser.Game(config);
 
@@ -101,23 +103,25 @@ function create() {
 
   // Pop des zombies aleatoirement 
   for(let i = 0; i < 8; i++){
-    zombie[i] = this.physics.add.sprite(Math.random()*4000, 500, 'zombie').setScale(0.2);
+    zombie[i] = this.physics.add.sprite((Math.random()*5000 + 800), 500, 'zombie').setScale(0.2);
     zombie[i].life = 50
     this.physics.add.collider(player,zombie[i], damage);
     this.physics.add.collider(layer, zombie[i]);
+    zombie[i].flipX = true;
   }
 
-    // Pop des JACKOs aleatoirement 
+  // Pop des JACKOs aleatoirement 
   for(let i = 0; i < 8; i++){
-    jacko[i] = this.physics.add.sprite(Math.random()*4000, 500, 'jacko').setScale(0.15);
+    jacko[i] = this.physics.add.sprite((Math.random()*5000 + 800), 500, 'jacko').setScale(0.15);
     jacko[i].life = 50
     this.physics.add.collider(player,jacko[i], damage);
     this.physics.add.collider(layer, jacko[i]);
+    jacko[i].flipX = true;
   }
   
   // Pop des fioles aleatoirement 
   for(let i = 0; i < 5; i++){
-    potion[i] = this.physics.add.sprite(Math.random()*4000, 500, 'gainLife').setScale(0.7);
+    potion[i] = this.physics.add.sprite(Math.random()*5000, 500, 'gainLife').setScale(0.7);
     potion[i].life = 50
     this.physics.add.collider(player,potion[i], hitPotion);
     this.physics.add.collider(layer, potion[i]);
@@ -158,10 +162,20 @@ function damage(player,monsters) {
   player.life -= monsters.life
 }
 
+function monsterMove() {
+  zombie.map(monster =>  monster.body && monster.setVelocityX(monsters_velocity))
+  jacko.map(monster =>  monster.body && monster.setVelocityX(monsters_velocity))
+}
+
+
 
 function update() {
 
-  let cursors = this.input.keyboard.createCursorKeys();
+  let cursors = this.input.keyboard.createCursorKeys(); 
+
+  if (zombie[0].y < 717 && jacko[0].y < 717) {
+    monsterMove();
+  }
 
   if (cursors.left.isDown) {
     player.setVelocityX(-160);
