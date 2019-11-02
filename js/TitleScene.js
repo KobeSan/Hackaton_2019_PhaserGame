@@ -17,11 +17,6 @@ class TitleScene extends Phaser.Scene {
         fontSize: 70 + 'px',
         color: 'white',
       }).setScrollFactor(0);
-    let instruction = this.add.text(635, 1200, '< INSTRUCTIONS >', 
-      { fontFamily: 'Verdana',
-        fontSize: 40 + 'px',
-        color: 'white',
-      }).setScrollFactor(0);
 
     play.setInteractive({ useHandCursor: true });
     play.on('pointerdown', () => {
@@ -29,11 +24,17 @@ class TitleScene extends Phaser.Scene {
       music.stop();
     });
 
-    // instructions.setInteractive({ useHandCursor: true });
-    // instruction.on('pointerdown', () => {
-    //   this.scene.switch('instructions');
-    //   music.stop();
-    // });
+    let instruction = this.add.text(635, 1200, '< INSTRUCTIONS >', 
+      { fontFamily: 'Verdana',
+        fontSize: 40 + 'px',
+        color: 'white',
+      }).setScrollFactor(0);
+
+    instruction.setInteractive({ useHandCursor: true });
+    instruction.on('pointerdown', () => {
+      this.scene.switch('instructions');
+      music.stop();
+    });
 
 
     music = this.sound.add('music');

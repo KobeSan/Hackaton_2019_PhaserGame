@@ -187,12 +187,6 @@ class Level_1 extends Phaser.Scene{
     this.physics.add.collider(this.player,tombe, stopGame);
     this.physics.add.collider(layer, tombe);
     tombe.life = 50;
-   
-    // API TO GET NAMES FOR OUR ENNEMY
-    axios('https://hackathon-wild-hackoween.herokuapp.com/monsters/')
-    .then((response) => {
-      console.log(response)
-      })
 }
   
    update = () => {
@@ -232,7 +226,7 @@ class Level_1 extends Phaser.Scene{
       if(dead = true){
         this.player.life = 0
       };
-      this.add.text(600, 500, '< GAME OVER >', 
+      this.add.text(450, 1000, '< GAME OVER >', 
       { fontFamily: 'Verdana',
         fontSize: 100 + 'px',
         color: 'red',
@@ -240,6 +234,16 @@ class Level_1 extends Phaser.Scene{
       this.physics.pause();
       this.player.setTint(0xff0000);
       this.player.anims.play('walk', false);
+      let goback = this.add.text(635, 1200, '< RETURN >', 
+      { fontFamily: 'Verdana',
+        fontSize: 40 + 'px',
+        color: 'white',
+      }).setScrollFactor(0);
+      goback.setInteractive({ useHandCursor: true });
+      goback.on('pointerdown', () => {
+        this.scene.switch('TitleScene');
+        music.stop();
+      });
     }
   
     
@@ -295,15 +299,25 @@ class Level_1 extends Phaser.Scene{
       this.physics.pause();
       this.player.setTint(0xff0000);
       this.player.anims.play('walk', false);
-      this.add.text(600, 500, '< GAME OVER >', 
+      this.add.text(450, 1000, '< GAME OVER >', 
       { fontFamily: 'Verdana',
         fontSize: 100 + 'px',
         color: 'red',
       }).setScrollFactor(0);
+      let goback = this.add.text(750, 1200, '< RETURN >', 
+      { fontFamily: 'Verdana',
+        fontSize: 40 + 'px',
+        color: 'white',
+      }).setScrollFactor(0);
+      goback.setInteractive({ useHandCursor: true });
+      goback.on('pointerdown', () => {
+        this.scene.switch('TitleScene');
+        music.stop();
+      });
     }
   
     if(tombe.life === 0){
-      this.add.text(window.innerWidth/3, window.innerHeight/3, '< YOU WIN >', 
+      this.add.text(450, 1000, '< YOU WIN >', 
       { fontFamily: 'Verdana',
         fontSize: 100 + 'px',
         color: 'green',

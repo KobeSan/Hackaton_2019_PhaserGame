@@ -4,30 +4,23 @@ class Instructions extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('background_img','../Assets/Jordan/BG-solo-jordan.png');
+    this.load.image('backgroundInstructions','../Assets/Jordan/InstructionsBG.png');
     this.load.audio('music', '../Assets/Music/Musique_fond_video.mp3');
   }
 
   create(){
-    this.add.image(850 , 750, 'background_img');
-    let instruction = this.add.text(635, 1200, '< INSTRUCTIONS >', 
-      { fontFamily: 'Verdana',
-        fontSize: 40 + 'px',
-        color: 'white',
-      }).setScrollFactor(0);
+    this.add.image(850 , 750, 'backgroundInstructions');
 
-    play.setInteractive({ useHandCursor: true });
-    play.on('pointerdown', () => {
-      this.scene.switch('level1');
+    let instruction = this.add.text(1250, 1350, '< RETURN >', 
+    { fontFamily: 'Verdana',
+      fontSize: 40 + 'px',
+      color: 'white',
+    }).setScrollFactor(0);
+
+    instruction.setInteractive({ useHandCursor: true });
+    instruction.on('pointerdown', () => {
+      this.scene.switch('TitleScene');
       music.stop();
     });
-
-
-    music = this.sound.add('music');
-    music.play();
   }
-
-
-
-
 }
