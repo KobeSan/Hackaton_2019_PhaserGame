@@ -1,22 +1,15 @@
-class TitleScene extends Phaser.Scene {
+class Instructions extends Phaser.Scene {
   constructor() {
-    super({
-      key: 'TitleScene'
-    });
+    super({key: 'instructions'});
   }
+
   preload() {
     this.load.image('background_img','../Assets/Jordan/BG-solo-jordan.png');
-    this.load.image('logo', '../Assets/Jordan/logo.png')
     this.load.audio('music', '../Assets/Music/Musique_fond_video.mp3');
   }
-  create() {
+
+  create(){
     this.add.image(850 , 750, 'background_img');
-    this.add.image(800, 500, 'logo').setScale(0.3);
-    let play = this.add.text(680, 1080, '< PLAY >', 
-      { fontFamily: 'Verdana',
-        fontSize: 70 + 'px',
-        color: 'white',
-      }).setScrollFactor(0);
     let instruction = this.add.text(635, 1200, '< INSTRUCTIONS >', 
       { fontFamily: 'Verdana',
         fontSize: 40 + 'px',
@@ -29,14 +22,12 @@ class TitleScene extends Phaser.Scene {
       music.stop();
     });
 
-    // instructions.setInteractive({ useHandCursor: true });
-    // instruction.on('pointerdown', () => {
-    //   this.scene.switch('instructions');
-    //   music.stop();
-    // });
-
 
     music = this.sound.add('music');
     music.play();
   }
- }
+
+
+
+
+}

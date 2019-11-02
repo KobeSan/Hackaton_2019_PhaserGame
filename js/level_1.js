@@ -26,13 +26,13 @@ class Level_1 extends Phaser.Scene{
   }
   
     preload = () => {
-    this.load.image('background', '../Assets/Map/Graveyard/png/BG.png');
+    this.load.image('background', '../Assets/Jordan/BG-solo-jordan.png');
     this.load.image('zombie', '../Assets/Characters/Zombies/png/male/Idle (1).png');
     this.load.image('tiles', '../Assets/Map/Graveyard/spritesheet.png');
     this.load.tilemapTiledJSON('map', '../Assets/Map/Graveyard/map.json');
-    this.load.image('life', '../Assets/Life/fullLife.png');
-    this.load.image('middleLife', '../Assets/Life/MidLife.png');
-    this.load.image('noLife', '../Assets/Life/NoLife.png');
+    this.load.image('life', '../Assets/Life/coeursPlein.png');
+    this.load.image('middleLife', '../Assets/Life/coeurs2.png');
+    this.load.image('noLife', '../Assets/Life/coeurs3.png');
     this.load.image('gainLife', '../Assets/Life/FioleSang.png');
     this.load.image('tombe', '../Assets/Map/Graveyard/png/Objects/TombStone.png')
     this.load.image('jacko', '../Assets/Characters/JackO/png/Idle.png');
@@ -44,7 +44,7 @@ class Level_1 extends Phaser.Scene{
   }
   
   create = () => {
-    background = this.add.image(window.innerWidth/2, window.innerHeight/2, 'background').setScrollFactor(0).setDisplaySize(window.innerWidth,window.innerHeight);
+    background = this.add.image(850 , 750, 'background').setScrollFactor(0);
     music = this.sound.add('theme');
     musicZombie = this.sound.add('zombieDies');
   
@@ -58,7 +58,6 @@ class Level_1 extends Phaser.Scene{
     this.player.life = 300
   
     let frameNames = this.textures.get('vampire').getFrameNames();
-    console.log(frameNames)
     this.anims.create({
       key: 'walk',
       frames: [
@@ -126,9 +125,7 @@ class Level_1 extends Phaser.Scene{
      }
      
      const damage = (player,zombie) => {
-       console.log(isAttacking)
        if(player.anims.currentAnim.key === 'attack'){
-         console.log(isAttacking)
          zombie.destroy();
          musicZombie.play();
        }else{
@@ -235,7 +232,7 @@ class Level_1 extends Phaser.Scene{
       if(dead = true){
         this.player.life = 0
       };
-      this.add.text(window.innerWidth/3, window.innerHeight/3, 'GAME OVER', 
+      this.add.text(600, 500, '< GAME OVER >', 
       { fontFamily: 'Verdana',
         fontSize: 100 + 'px',
         color: 'red',
@@ -248,57 +245,57 @@ class Level_1 extends Phaser.Scene{
     
     if (this.player.life ===  300) {
       coeur1.destroy();
-      coeur1 = this.add.image(170, 70, 'life').setScrollFactor(0);
+      coeur1 = this.add.image(280, 70, 'life').setScrollFactor(0).setScale(0.6);
       coeur2.destroy();
-      coeur2 = this.add.image(110, 70, 'life').setScrollFactor(0);
+      coeur2 = this.add.image(180, 70, 'life').setScrollFactor(0).setScale(0.6);
       coeur3.destroy();
-      coeur3 = this.add.image(50, 70, 'life').setScrollFactor(0);
+      coeur3 = this.add.image(80, 70, 'life').setScrollFactor(0).setScale(0.6);
     } else if (this.player.life === 250){
       coeur1.destroy();
-      coeur1 = this.add.image(170, 70, 'middleLife').setScrollFactor(0);
+      coeur1 = this.add.image(280, 70, 'middleLife').setScrollFactor(0).setScale(0.6);
       coeur2.destroy();
-      coeur2 = this.add.image(110, 70, 'life').setScrollFactor(0);
+      coeur2 = this.add.image(180, 70, 'life').setScrollFactor(0).setScale(0.6);
       coeur3.destroy();
-      coeur3 = this.add.image(50, 70, 'life').setScrollFactor(0);
+      coeur3 = this.add.image(80, 70, 'life').setScrollFactor(0).setScale(0.6);
     }else if (this.player.life === 200){
       coeur1.destroy();
-      coeur1 = this.add.image(170, 70, 'noLife').setScrollFactor(0);
+      coeur1 = this.add.image(280, 70, 'noLife').setScrollFactor(0).setScale(0.6);
       coeur2.destroy();
-      coeur2 = this.add.image(110, 70, 'life').setScrollFactor(0);
+      coeur2 = this.add.image(180, 70, 'life').setScrollFactor(0).setScale(0.6);
       coeur3.destroy();
-      coeur3 = this.add.image(50, 70, 'life').setScrollFactor(0);
+      coeur3 = this.add.image(80, 70, 'life').setScrollFactor(0).setScale(0.6);
     }else if (this.player.life === 150){
       coeur1.destroy();
-      coeur1 = this.add.image(170, 70, 'noLife').setScrollFactor(0);
+      coeur1 = this.add.image(280, 70, 'noLife').setScrollFactor(0).setScale(0.6);
       coeur2.destroy();
-      coeur2 = this.add.image(110, 70, 'middleLife').setScrollFactor(0);
+      coeur2 = this.add.image(180, 70, 'middleLife').setScrollFactor(0).setScale(0.6);
       coeur3.destroy();
-      coeur3 = this.add.image(50, 70, 'life').setScrollFactor(0);
+      coeur3 = this.add.image(80, 70, 'life').setScrollFactor(0).setScale(0.6);
     }else if (this.player.life === 100){
       coeur1.destroy();
-      coeur1 = this.add.image(170, 70, 'noLife').setScrollFactor(0);
+      coeur1 = this.add.image(280, 70, 'noLife').setScrollFactor(0).setScale(0.6);
       coeur2.destroy();
-      coeur2 = this.add.image(110, 70, 'noLife').setScrollFactor(0);
+      coeur2 = this.add.image(180, 70, 'noLife').setScrollFactor(0).setScale(0.6);
       coeur3.destroy();
-      coeur3 = this.add.image(50, 70, 'life').setScrollFactor(0);
+      coeur3 = this.add.image(80, 70, 'life').setScrollFactor(0).setScale(0.6);
     }else if (this.player.life === 50){
       coeur1.destroy();
-      coeur1 = this.add.image(170, 70, 'noLife').setScrollFactor(0);
+      coeur1 = this.add.image(280, 70, 'noLife').setScrollFactor(0).setScale(0.6);
       coeur2.destroy();
-      coeur2 = this.add.image(110, 70, 'noLife').setScrollFactor(0);
+      coeur2 = this.add.image(180, 70, 'noLife').setScrollFactor(0).setScale(0.6);
       coeur3.destroy();
-      coeur3 = this.add.image(50, 70, 'middleLife').setScrollFactor(0);
+      coeur3 = this.add.image(80, 70, 'middleLife').setScrollFactor(0).setScale(0.6);
     }else if (this.player.life <= 0) {
       coeur1.destroy();
-      coeur1 = this.add.image(170, 70, 'noLife').setScrollFactor(0);
+      coeur1 = this.add.image(280, 70, 'noLife').setScrollFactor(0).setScale(0.6);
       coeur2.destroy();
-      coeur2 = this.add.image(110, 70, 'noLife').setScrollFactor(0);
+      coeur2 = this.add.image(180, 70, 'noLife').setScrollFactor(0).setScale(0.6);
       coeur3.destroy();
-      coeur3 = this.add.image(50, 70, 'noLife').setScrollFactor(0);
+      coeur3 = this.add.image(80, 70, 'noLife').setScrollFactor(0).setScale(0.6);
       this.physics.pause();
       this.player.setTint(0xff0000);
       this.player.anims.play('walk', false);
-      this.add.text(window.innerWidth/3, window.innerHeight/3, 'GAME OVER', 
+      this.add.text(600, 500, '< GAME OVER >', 
       { fontFamily: 'Verdana',
         fontSize: 100 + 'px',
         color: 'red',
@@ -306,7 +303,7 @@ class Level_1 extends Phaser.Scene{
     }
   
     if(tombe.life === 0){
-      this.add.text(window.innerWidth/3, window.innerHeight/3, 'YOU WIN', 
+      this.add.text(window.innerWidth/3, window.innerHeight/3, '< YOU WIN >', 
       { fontFamily: 'Verdana',
         fontSize: 100 + 'px',
         color: 'green',
