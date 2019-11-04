@@ -296,7 +296,7 @@ class Level_1 extends Phaser.Scene{
         fontSize: 100 + 'px',
         color: 'red',
       }).setScrollFactor(0);
-      let goback = this.add.text(730, 600, '< RETURN >', 
+      let goback = this.add.text(730, 600, '< REPLAY >', 
       { fontFamily: 'Verdana',
         fontSize: 40 + 'px',
         color: 'black',
@@ -314,6 +314,7 @@ class Level_1 extends Phaser.Scene{
         fontSize: 100 + 'px',
         color: 'green',
       }).setScrollFactor(0);
+      music.stop();
       this.physics.pause();
       this.player.anims.play('walk', false);
       let replay = this.add.text(750, 1200, '< REPLAY >', 
@@ -323,7 +324,7 @@ class Level_1 extends Phaser.Scene{
       }).setScrollFactor(0);
       replay.setInteractive({ useHandCursor: true });
       replay.on('pointerdown', () => {
-        this.scene.switch('TitleScene');
+        scene.scene.restart();
         music.stop();
       });
     }

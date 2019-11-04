@@ -20,7 +20,7 @@ class TitleScene extends Phaser.Scene {
 
     play.setInteractive({ useHandCursor: true });
     play.on('pointerdown', () => {
-      this.scene.switch('level1');
+      this.scene.start('level1');
       music.stop();
     });
 
