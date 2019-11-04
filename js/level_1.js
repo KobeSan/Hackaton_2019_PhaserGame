@@ -145,13 +145,13 @@ class Level_1 extends Phaser.Scene{
   
     map = this.make.tilemap({ key: 'map' });
     tileset = map.addTilesetImage('spritesheet', 'tiles');
-    layer = map.createDynamicLayer('top', tileset, 0, 0);
-    layer2 = map.createDynamicLayer('below', tileset, 0, 0)
+    layer = map.createDynamicLayer('top', tileset, 0, 600);
+    layer2 = map.createDynamicLayer('below', tileset, 0, 600)
   
     layer.setCollisionByProperty({ collides: true });
     layer.setCollisionByExclusion([-1]);
     this.physics.world.bounds.width = layer.width;
-    this.physics.world.bounds.height = layer.height;
+    this.physics.world.bounds.height = 1500;
     this.physics.add.collider(layer, this.player);
   
    
@@ -221,7 +221,7 @@ class Level_1 extends Phaser.Scene{
       this.player.body.setVelocityY(-500); // jump up
     }
   
-    if (this.player.y > 820) {
+    if (this.player.y > 1400) {
       dead = true
       if(dead = true){
         this.player.life = 0
@@ -234,16 +234,6 @@ class Level_1 extends Phaser.Scene{
       this.physics.pause();
       this.player.setTint(0xff0000);
       this.player.anims.play('walk', false);
-      let goback = this.add.text(635, 1200, '< RETURN >', 
-      { fontFamily: 'Verdana',
-        fontSize: 40 + 'px',
-        color: 'white',
-      }).setScrollFactor(0);
-      goback.setInteractive({ useHandCursor: true });
-      goback.on('pointerdown', () => {
-        this.scene.switch('TitleScene');
-        music.stop();
-      });
     }
   
     
@@ -324,6 +314,16 @@ class Level_1 extends Phaser.Scene{
       }).setScrollFactor(0);
       this.physics.pause();
       this.player.anims.play('walk', false);
+      let replay = this.add.text(750, 1200, '< REPLAY >', 
+      { fontFamily: 'Verdana',
+        fontSize: 40 + 'px',
+        color: 'white',
+      }).setScrollFactor(0);
+      replay.setInteractive({ useHandCursor: true });
+      replay.on('pointerdown', () => {
+        this.scene.switch('TitleScene');
+        music.stop();
+      });
     }
   
   

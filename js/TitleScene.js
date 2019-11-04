@@ -29,11 +29,10 @@ class TitleScene extends Phaser.Scene {
         fontSize: 40 + 'px',
         color: 'white',
       }).setScrollFactor(0);
-
+    
     instruction.setInteractive({ useHandCursor: true });
     instruction.on('pointerdown', () => {
       this.scene.switch('instructions');
-      music.stop();
     });
 
 
