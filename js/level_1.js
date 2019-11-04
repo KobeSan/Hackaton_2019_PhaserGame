@@ -209,15 +209,17 @@ class Level_1 extends Phaser.Scene{
       this.player.setVelocityX(160);
       this.player.anims.play('walk', true)
       this.player.flipX = false
-    } else if (cursors.down.isDown) {
-      isAttacking = true;
-      this.player.anims.play('attack', true)
-      this.player.flipX = false
-    }else {
+    }
+    else if (cursors.space.isDown) {
+    isAttacking = true;
+    this.player.anims.play('attack', true)
+    this.player.flipX = false
+    }
+    else {
       this.player.setVelocityX(0);
     };
   
-    if ((cursors.space.isDown || cursors.up.isDown) && this.player.body.onFloor()) {
+    if ((cursors.up.isDown) && this.player.body.onFloor()) {
       this.player.body.setVelocityY(-500); // jump up
     }
   
@@ -226,13 +228,13 @@ class Level_1 extends Phaser.Scene{
       if(dead = true){
         this.player.life = 0
       };
-      this.add.text(450, 1000, '< GAME OVER >', 
+      this.add.text(450, 750, '< GAME OVER >', 
       { fontFamily: 'Verdana',
         fontSize: 100 + 'px',
         color: 'red',
       }).setScrollFactor(0);
       this.physics.pause();
-      this.player.setTint(0xff0000);
+      this.player.setTint(0xff0000); //put the player in red
       this.player.anims.play('walk', false);
     }
   
@@ -289,15 +291,15 @@ class Level_1 extends Phaser.Scene{
       this.physics.pause();
       this.player.setTint(0xff0000);
       this.player.anims.play('walk', false);
-      this.add.text(450, 1000, '< GAME OVER >', 
+      this.add.text(430, 450, '< GAME OVER >', 
       { fontFamily: 'Verdana',
         fontSize: 100 + 'px',
         color: 'red',
       }).setScrollFactor(0);
-      let goback = this.add.text(750, 1200, '< RETURN >', 
+      let goback = this.add.text(730, 600, '< RETURN >', 
       { fontFamily: 'Verdana',
         fontSize: 40 + 'px',
-        color: 'white',
+        color: 'black',
       }).setScrollFactor(0);
       goback.setInteractive({ useHandCursor: true });
       goback.on('pointerdown', () => {
