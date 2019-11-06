@@ -6,15 +6,13 @@ class TitleScene extends Phaser.Scene {
   }
   preload() {
     this.load.image('background_img','../Assets/Jordan/BG-solo-jordan.png');
-    this.load.image('logo', '../Assets/Jordan/logo.png')
     this.load.audio('music', '../Assets/Music/Musique_fond_video.mp3');
   }
   create() {
-    this.add.image(850 , 750, 'background_img');
-    this.add.image(800, 500, 'logo').setScale(0.3);
-    let play = this.add.text(680, 1080, '< PLAY >', 
+    this.add.image(375, 325, 'background_img');
+    let play = this.add.text(298, 450, '< PLAY >', 
       { fontFamily: 'Verdana',
-        fontSize: 70 + 'px',
+        fontSize: 30 + 'px',
         color: 'white',
       }).setScrollFactor(0);
 
@@ -24,9 +22,9 @@ class TitleScene extends Phaser.Scene {
       music.stop();
     });
 
-    let instruction = this.add.text(635, 1200, '< INSTRUCTIONS >', 
+    let instruction = this.add.text(265, 500, '< INSTRUCTIONS >', 
       { fontFamily: 'Verdana',
-        fontSize: 40 + 'px',
+        fontSize: 20 + 'px',
         color: 'white',
       }).setScrollFactor(0);
     

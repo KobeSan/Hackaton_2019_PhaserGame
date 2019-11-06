@@ -44,7 +44,7 @@ class Level_1 extends Phaser.Scene{
   }
   
   create = () => {
-    background = this.add.image(850 , 750, 'background').setScrollFactor(0);
+    background = this.add.image(375, 325, 'background').setScrollFactor(0);
     music = this.sound.add('theme');
     musicZombie = this.sound.add('zombieDies');
   
@@ -54,7 +54,7 @@ class Level_1 extends Phaser.Scene{
     coeur2 = this.add.image(1150, 70, 'middleLife').setScrollFactor(0);
     coeur3 = this.add.image(1150, 70, 'noLife').setScrollFactor(0);
   
-    this.player = this.physics.add.sprite(400, 300, 'vampire');
+    this.player = this.physics.add.sprite(375, 325, 'vampire');
     this.player.life = 300
   
     let frameNames = this.textures.get('vampire').getFrameNames();
@@ -145,8 +145,8 @@ class Level_1 extends Phaser.Scene{
   
     map = this.make.tilemap({ key: 'map' });
     tileset = map.addTilesetImage('spritesheet', 'tiles');
-    layer = map.createDynamicLayer('top', tileset, 0, 600);
-    layer2 = map.createDynamicLayer('below', tileset, 0, 600)
+    layer = map.createDynamicLayer('top', tileset, 0, 20);
+    layer2 = map.createDynamicLayer('below', tileset, 0, 20)
   
     layer.setCollisionByProperty({ collides: true });
     layer.setCollisionByExclusion([-1]);
@@ -241,59 +241,59 @@ class Level_1 extends Phaser.Scene{
     
     if (this.player.life ===  300) {
       coeur1.destroy();
-      coeur1 = this.add.image(280, 70, 'life').setScrollFactor(0).setScale(0.6);
+      coeur1 = this.add.image(150, 50, 'life').setScrollFactor(0).setScale(0.3);
       coeur2.destroy();
-      coeur2 = this.add.image(180, 70, 'life').setScrollFactor(0).setScale(0.6);
+      coeur2 = this.add.image(100, 50, 'life').setScrollFactor(0).setScale(0.3);
       coeur3.destroy();
-      coeur3 = this.add.image(80, 70, 'life').setScrollFactor(0).setScale(0.6);
+      coeur3 = this.add.image(50, 50, 'life').setScrollFactor(0).setScale(0.3);
     } else if (this.player.life === 250){
       coeur1.destroy();
-      coeur1 = this.add.image(280, 70, 'middleLife').setScrollFactor(0).setScale(0.6);
+      coeur1 = this.add.image(150, 50, 'middleLife').setScrollFactor(0).setScale(0.3);
       coeur2.destroy();
-      coeur2 = this.add.image(180, 70, 'life').setScrollFactor(0).setScale(0.6);
+      coeur2 = this.add.image(100, 50, 'life').setScrollFactor(0).setScale(0.3);
       coeur3.destroy();
-      coeur3 = this.add.image(80, 70, 'life').setScrollFactor(0).setScale(0.6);
+      coeur3 = this.add.image(50, 50, 'life').setScrollFactor(0).setScale(0.3);
     }else if (this.player.life === 200){
       coeur1.destroy();
-      coeur1 = this.add.image(280, 70, 'noLife').setScrollFactor(0).setScale(0.6);
+      coeur1 = this.add.image(150, 50, 'noLife').setScrollFactor(0).setScale(0.3);
       coeur2.destroy();
-      coeur2 = this.add.image(180, 70, 'life').setScrollFactor(0).setScale(0.6);
+      coeur2 = this.add.image(100, 50, 'life').setScrollFactor(0).setScale(0.3);
       coeur3.destroy();
-      coeur3 = this.add.image(80, 70, 'life').setScrollFactor(0).setScale(0.6);
+      coeur3 = this.add.image(50, 50, 'life').setScrollFactor(0).setScale(0.3);
     }else if (this.player.life === 150){
       coeur1.destroy();
-      coeur1 = this.add.image(280, 70, 'noLife').setScrollFactor(0).setScale(0.6);
+      coeur1 = this.add.image(150, 50, 'noLife').setScrollFactor(0).setScale(0.3);
       coeur2.destroy();
-      coeur2 = this.add.image(180, 70, 'middleLife').setScrollFactor(0).setScale(0.6);
+      coeur2 = this.add.image(100, 50, 'middleLife').setScrollFactor(0).setScale(0.3);
       coeur3.destroy();
-      coeur3 = this.add.image(80, 70, 'life').setScrollFactor(0).setScale(0.6);
+      coeur3 = this.add.image(50, 50, 'life').setScrollFactor(0).setScale(0.3);
     }else if (this.player.life === 100){
       coeur1.destroy();
-      coeur1 = this.add.image(280, 70, 'noLife').setScrollFactor(0).setScale(0.6);
+      coeur1 = this.add.image(150, 50, 'noLife').setScrollFactor(0).setScale(0.3);
       coeur2.destroy();
-      coeur2 = this.add.image(180, 70, 'noLife').setScrollFactor(0).setScale(0.6);
+      coeur2 = this.add.image(100, 50, 'noLife').setScrollFactor(0).setScale(0.3);
       coeur3.destroy();
-      coeur3 = this.add.image(80, 70, 'life').setScrollFactor(0).setScale(0.6);
+      coeur3 = this.add.image(50, 50, 'life').setScrollFactor(0).setScale(0.3);
     }else if (this.player.life === 50){
       coeur1.destroy();
-      coeur1 = this.add.image(280, 70, 'noLife').setScrollFactor(0).setScale(0.6);
+      coeur1 = this.add.image(150, 50, 'noLife').setScrollFactor(0).setScale(0.3);
       coeur2.destroy();
-      coeur2 = this.add.image(180, 70, 'noLife').setScrollFactor(0).setScale(0.6);
+      coeur2 = this.add.image(100, 50, 'noLife').setScrollFactor(0).setScale(0.3);
       coeur3.destroy();
-      coeur3 = this.add.image(80, 70, 'middleLife').setScrollFactor(0).setScale(0.6);
+      coeur3 = this.add.image(50, 50, 'middleLife').setScrollFactor(0).setScale(0.3);
     }else if (this.player.life <= 0) {
       coeur1.destroy();
-      coeur1 = this.add.image(280, 70, 'noLife').setScrollFactor(0).setScale(0.6);
+      coeur1 = this.add.image(150, 50, 'noLife').setScrollFactor(0).setScale(0.3);
       coeur2.destroy();
-      coeur2 = this.add.image(180, 70, 'noLife').setScrollFactor(0).setScale(0.6);
+      coeur2 = this.add.image(100, 50, 'noLife').setScrollFactor(0).setScale(0.3);
       coeur3.destroy();
-      coeur3 = this.add.image(80, 70, 'noLife').setScrollFactor(0).setScale(0.6);
+      coeur3 = this.add.image(50, 50, 'noLife').setScrollFactor(0).setScale(0.3);
       this.physics.pause();
       this.player.setTint(0xff0000);
       this.player.anims.play('walk', false);
-      this.add.text(430, 450, '< GAME OVER >', 
+      this.add.text(298, 450, '< GAME OVER >', 
       { fontFamily: 'Verdana',
-        fontSize: 100 + 'px',
+      fontSize: 30 + 'px',
         color: 'red',
       }).setScrollFactor(0);
       let goback = this.add.text(730, 600, '< REPLAY >', 

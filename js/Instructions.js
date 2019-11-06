@@ -9,11 +9,11 @@ class Instructions extends Phaser.Scene {
   }
 
   create(){
-    this.add.image(850 , 750, 'backgroundInstructions');
+    this.add.image(375, 325, 'backgroundInstructions');
 
-    let instruction = this.add.text(1250, 1350, '< RETURN >', 
+    let instruction = this.add.text(550, 580, '< RETURN >', 
     { fontFamily: 'Verdana',
-      fontSize: 40 + 'px',
+      fontSize: 20 + 'px',
       color: 'white',
     }).setScrollFactor(0);
 
