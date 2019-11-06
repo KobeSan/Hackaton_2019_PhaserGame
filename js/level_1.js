@@ -26,7 +26,7 @@ class Level_1 extends Phaser.Scene{
   }
   
     preload = () => {
-    this.load.image('background', '../Assets/Jordan/BG-solo-jordan.png');
+    this.load.image('background', '../Assets/Jordan/BG-game.png');
     this.load.image('zombie', '../Assets/Characters/Zombies/png/male/Idle (1).png');
     this.load.image('tiles', '../Assets/Map/Graveyard/spritesheet.png');
     this.load.tilemapTiledJSON('map', '../Assets/Map/Graveyard/map.json');
