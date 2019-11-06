@@ -296,7 +296,7 @@ class Level_1 extends Phaser.Scene{
       fontSize: 30 + 'px',
         color: 'red',
       }).setScrollFactor(0);
-      let goback = this.add.text(730, 600, '< REPLAY >', 
+      let goback = this.add.text(298, 450, '< REPLAY >', 
       { fontFamily: 'Verdana',
         fontSize: 40 + 'px',
         color: 'black',
@@ -307,19 +307,19 @@ class Level_1 extends Phaser.Scene{
         music.stop();
       });
     }
-  
+
     if(tombe.life === 0){
-      this.add.text(450, 1000, '< YOU WIN >', 
+      this.add.text(200, 250, '< YOU WIN >', 
       { fontFamily: 'Verdana',
-        fontSize: 100 + 'px',
+        fontSize: 50 + 'px',
         color: 'green',
       }).setScrollFactor(0);
       music.stop();
       this.physics.pause();
       this.player.anims.play('walk', false);
-      let replay = this.add.text(750, 1200, '< REPLAY >', 
+      let replay = this.add.text(310, 300, '< REPLAY >', 
       { fontFamily: 'Verdana',
-        fontSize: 40 + 'px',
+        fontSize: 20 + 'px',
         color: 'white',
       }).setScrollFactor(0);
       replay.setInteractive({ useHandCursor: true });
